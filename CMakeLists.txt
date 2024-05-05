@@ -9,7 +9,7 @@ fetch_dependency(
     URL_MD5 8612d88f97ed40b36eada598e6a893dd
 )
 
-project(csound-websocket-io-plugin)
+project(csound-glm-plugin)
 
 find_package(cglm REQUIRED)
 
