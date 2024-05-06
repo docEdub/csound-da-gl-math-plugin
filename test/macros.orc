@@ -10,8 +10,11 @@ instr $InstrumentName
 endin
 #
 
+#define FUZZY_EQUAL(Expected'Actual) #abs($Expected - $Actual) < 0.0001#
+#define FUZZY_UNEQUAL(Expected'Actual) #abs($Expected - $Actual) > 0.0001#
+
 #define ASSERT_EQUAL_k(Expected'Actual) #
-    if ($Expected == $Actual) then
+    if ($FUZZY_EQUAL($Expected ' $Actual)) then
         printsk("\n  + PASSED:  ASSERT_EQUAL_k($Expected'$Actual)")
     else
         printsk("\n  - FAILED:  ASSERT_EQUAL_k($Expected'$Actual)")
@@ -32,7 +35,7 @@ endin
         ki = 0
         k_printedFailed = 0
         while (ki < lenarray($Expected)) do
-            if ($Expected[ki] != $Actual[ki]) then
+            if ($FUZZY_UNEQUAL($Expected[ki] ' $Actual[ki])) then
                 if (k_printedFailed == 0) then
                     printsk("\n  - FAILED:  ASSERT_EQUAL_kArray($Expected'$Actual)")
                     k_printedFailed = 1

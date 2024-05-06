@@ -19,7 +19,7 @@ kr = 4800
 gk_failures init 0
 
 #include "macros.orc"
-#include "test.orc"
+#include "test-mat4.orc"
 
 instr RunTests
     prints("\n")

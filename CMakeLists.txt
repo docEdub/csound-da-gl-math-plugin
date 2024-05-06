@@ -13,12 +13,16 @@ project(csound-glm-plugin)
 
 find_package(glm REQUIRED)
 
+set(CMAKE_CXX_STANDARD 11)
+
 add_csound_plugin(
     TARGET glm
     SOURCES
         "src/_init_.c"
         "src/common.c"
         "src/common.h"
+        "src/mat4.cpp"
+        "src/mat4.h"
     LIBRARIES
         glm::glm-header-only
 )
