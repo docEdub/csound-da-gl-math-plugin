@@ -11,7 +11,7 @@ fetch_dependency(
 
 project(csound-glm-plugin)
 
-find_package(cglm REQUIRED)
+find_package(glm REQUIRED)
 
 add_csound_plugin(
     TARGET glm
@@ -20,5 +20,5 @@ add_csound_plugin(
         "src/common.c"
         "src/common.h"
     LIBRARIES
-        cglm::cglm
+        glm::glm-header-only
 )
