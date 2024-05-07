@@ -9,6 +9,28 @@ typedef struct GLM_Mat4
     ARRAYDAT *dest;
 } GLM_Mat4;
 
+typedef struct GLM_Mat4_Quat
+{
+    OPDS h;
+    ARRAYDAT *m;
+    ARRAYDAT *dest;
+} GLM_Mat4_Quat;
+
+typedef struct GLM_Mat4_Val_Mat4
+{
+    OPDS h;
+    ARRAYDAT *m;
+    MYFLT *val;
+    ARRAYDAT *dest;
+} GLM_Mat4_Val_Mat4;
+
+typedef struct GLM_Mat4_Val
+{
+    OPDS h;
+    ARRAYDAT *m;
+    MYFLT *dest;
+} GLM_Mat4_Val;
+
 typedef struct GLM_Mat4_Vec3_x2
 {
     OPDS h;
