@@ -98,120 +98,120 @@ gk_mat4_bxa[] fillarray \
     00.00, 00.00, 00.00, 01.00
 
 
-$TEST(glm_mat4_copy)
+$TEST(GLM_Mat4_copy)
     k_actual[] init 16
 
-    glm_mat4_copy(gk_mat4_a, k_actual)
+    k_actual = GLM_Mat4_copy(gk_mat4_a)
     $ASSERT_EQUAL_kArray(gk_mat4_a ' k_actual)
 
-    glm_mat4_copy(gk_mat4_b, k_actual)
+    k_actual = GLM_Mat4_copy(gk_mat4_b)
     $ASSERT_EQUAL_kArray(gk_mat4_b ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_identity)
+$TEST(GLM_Mat4_identity)
     k_actual[] init 16
 
-    glm_mat4_identity(k_actual)
+    k_actual = GLM_Mat4_identity()
     $ASSERT_EQUAL_kArray(gk_mat4_identity ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_zero)
+$TEST(GLM_Mat4_zero)
     k_actual[] init 16
 
-    glm_mat4_zero(k_actual)
+    k_actual = GLM_Mat4_zero()
     $ASSERT_EQUAL_kArray(gk_mat4_zero ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_mul)
+$TEST(GLM_Mat4_mul)
     k_actual[] init 16
 
-    glm_mat4_mul(gk_mat4_a, gk_mat4_b, k_actual)
+    k_actual = GLM_Mat4_mul(gk_mat4_a, gk_mat4_b)
     $ASSERT_EQUAL_kArray(gk_mat4_axb ' k_actual)
 
-    glm_mat4_mul(gk_mat4_b, gk_mat4_a, k_actual)
+    k_actual = GLM_Mat4_mul(gk_mat4_b, gk_mat4_a)
     $ASSERT_EQUAL_kArray(gk_mat4_bxa ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_mulv3)
+$TEST(GLM_Mat4_mulv3)
     k_expected[] fillarray 1.46, 1.52, 1.58
     k_actual[] init 3
 
-    glm_mat4_mulv3(gk_mat4_a, gk_vec3_a, k_actual)
+    k_actual = GLM_Mat4_mulv3(gk_mat4_a, gk_vec3_a)
     $ASSERT_EQUAL_kArray(k_expected ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_quat)
+$TEST(GLM_Mat4_quat)
     k_expected[] fillarray -0.163232, 0.326464, -0.163232, 1.378405
     k_actual[] init 4
 
-    glm_mat4_quat(gk_mat4_a, k_actual)
+    k_actual = GLM_Mat4_quat(gk_mat4_a)
     $ASSERT_EQUAL_kArray(k_expected ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_transpose)
+$TEST(GLM_Mat4_transpose)
     k_actual[] init 16
 
-    glm_mat4_copy(gk_mat4_a, k_actual)
-    glm_mat4_transpose(k_actual)
+    k_actual = GLM_Mat4_copy(gk_mat4_a)
+    GLM_Mat4_transpose(k_actual)
     $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual)
 
-    glm_mat4_copy(gk_mat4_b, k_actual)
-    glm_mat4_transpose(k_actual)
+    k_actual = GLM_Mat4_copy(gk_mat4_b)
+    GLM_Mat4_transpose(k_actual)
     $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_transpose_to)
+$TEST(GLM_Mat4_transpose_to)
     k_actual[] init 16
 
-    glm_mat4_transpose_to(gk_mat4_a, k_actual)
+    k_actual = GLM_Mat4_transpose_to(gk_mat4_a)
     $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual)
 
-    glm_mat4_transpose_to(gk_mat4_b, k_actual)
+    k_actual = GLM_Mat4_transpose_to(gk_mat4_b)
     $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_scale)
+$TEST(GLM_Mat4_scale)
     k_actual[] init 16
 
-    glm_mat4_scale(gk_mat4_a, 2, k_actual)
+    k_actual = GLM_Mat4_scale(gk_mat4_a, 2)
     $ASSERT_EQUAL_kArray(gk_mat4_a_scaled_x2 ' k_actual)
 
-    glm_mat4_scale(gk_mat4_b, 2, k_actual)
+    k_actual = GLM_Mat4_scale(gk_mat4_b, 2)
     $ASSERT_EQUAL_kArray(gk_mat4_b_scaled_x2 ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_det)
+$TEST(GLM_Mat4_det)
     k_actual init 0
 
-    glm_mat4_det(gk_mat4_identity, k_actual)
+    k_actual = GLM_Mat4_det(gk_mat4_identity)
     $ASSERT_EQUAL_k(1 ' k_actual)
 
-    glm_mat4_det(gk_mat4_a, k_actual)
+    k_actual = GLM_Mat4_det(gk_mat4_a)
     $ASSERT_EQUAL_k(0 ' k_actual)
 
-    glm_mat4_det(gk_mat4_b, k_actual)
+    k_actual = GLM_Mat4_det(gk_mat4_b)
     $ASSERT_EQUAL_k(0 ' k_actual)
 $END_TEST
 
 
-$TEST(glm_mat4_inv)
+$TEST(GLM_Mat4_inv)
     k_actual[] init 16
 
-    glm_mat4_inv(gk_mat4_identity, k_actual)
+    k_actual = GLM_Mat4_inv(gk_mat4_identity)
     $ASSERT_EQUAL_kArray(gk_mat4_identity ' k_actual)
 
-    glm_mat4_inv(gk_mat4_a, k_actual)
+    k_actual = GLM_Mat4_inv(gk_mat4_a)
     $ASSERT_EQUAL_kArray(gk_mat4_a_inverted ' k_actual)
 
-    glm_mat4_inv(gk_mat4_b, k_actual)
+    k_actual = GLM_Mat4_inv(gk_mat4_b)
     $ASSERT_EQUAL_kArray(gk_mat4_b_inverted ' k_actual)
 $END_TEST

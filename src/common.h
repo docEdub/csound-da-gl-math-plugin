@@ -6,52 +6,58 @@
 typedef struct GLM_Mat4
 {
     OPDS h;
-    ARRAYDAT *dest;
+    ARRAYDAT *out;
 } GLM_Mat4;
 
-typedef struct GLM_Mat4_Quat
+typedef struct GLM_Quat__Mat4
 {
     OPDS h;
+    ARRAYDAT *out;
     ARRAYDAT *m;
-    ARRAYDAT *dest;
-} GLM_Mat4_Quat;
+} GLM_Quat__Mat4;
 
-typedef struct GLM_Mat4_Val_Mat4
+typedef struct GLM_Mat4__Mat4_Val
 {
     OPDS h;
+    ARRAYDAT *out;
     ARRAYDAT *m;
     MYFLT *val;
-    ARRAYDAT *dest;
-} GLM_Mat4_Val_Mat4;
+} GLM_Mat4__Mat4_Val;
 
-typedef struct GLM_Mat4_Val
+typedef struct GLM_Val__Mat4
 {
     OPDS h;
+    MYFLT *out;
     ARRAYDAT *m;
-    MYFLT *dest;
-} GLM_Mat4_Val;
+} GLM_Val__Mat4;
 
-typedef struct GLM_Mat4_Vec3_x2
+typedef struct GLM_Vec3__Mat4_Vec3
 {
     OPDS h;
+    ARRAYDAT *out;
     ARRAYDAT *m;
     ARRAYDAT *v;
-    ARRAYDAT *dest;
-} GLM_Mat4_Vec3_x2;
+} GLM_Vec3__Mat4_Vec3;
 
-typedef struct GLM_Mat4_x2
+typedef struct GLM_Mat4__Mat4
+{
+    OPDS h;
+    ARRAYDAT *out;
+    ARRAYDAT *m;
+} GLM_Mat4__Mat4;
+
+typedef struct GLM_Mat4__Mat4_Mat4
+{
+    OPDS h;
+    ARRAYDAT *out;
+    ARRAYDAT *m1;
+    ARRAYDAT *m2;
+} GLM_Mat4__Mat4_Mat4;
+
+typedef struct GLM_void__Mat4
 {
     OPDS h;
     ARRAYDAT *m;
-    ARRAYDAT *dest;
-} GLM_Mat4_x2;
-
-typedef struct GLM_Mat4_x3
-{
-    OPDS h;
-    ARRAYDAT *m1;
-    ARRAYDAT *m2;
-    ARRAYDAT *dest;
-} GLM_Mat4_x3;
+} GLM_void__Mat4;
 
 #endif
