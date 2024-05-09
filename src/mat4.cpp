@@ -12,10 +12,81 @@ const size_t sizeof_vec3 = dvec3::length() * sizeof(dvec3::value_type);
 const dmat4 mat4_identity(1.0);
 const dmat4 mat4_zero(0.0);
 
+static int32_t check(CSOUND *csound, GLM_Mat4 *p)
+{
+    return check_Mat4(csound, p->out);
+}
+
+static int32_t check(CSOUND *csound, GLM_Mat4__Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Mat4(csound, p->out);
+    result |= check_Mat4(csound, p->m);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, GLM_Mat4__Mat4_Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Mat4(csound, p->out);
+    result |= check_Mat4(csound, p->m1);
+    result |= check_Mat4(csound, p->m2);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, GLM_Mat4__Mat4_Val *p)
+{
+    int32_t result = OK;
+    result |= check_Mat4(csound, p->out);
+    result |= check_Mat4(csound, p->m);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, GLM_Quat__Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Quat(csound, p->out);
+    result |= check_Mat4(csound, p->m);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, GLM_Val__Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Mat4(csound, p->m);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, GLM_Vec3__Mat4_Vec3 *p)
+{
+    int32_t result = OK;
+    result |= check_Vec3(csound, p->out);
+    result |= check_Mat4(csound, p->m);
+    result |= check_Vec3(csound, p->v);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, GLM_void__Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Mat4(csound, p->m);
+    return result;
+}
+
+int32_t glm_mat4_copy_init(CSOUND *csound, GLM_Mat4_copy *p)
+{
+    return check(csound, p);
+}
+
 int32_t glm_mat4_copy(CSOUND *, GLM_Mat4_copy *p)
 {
     memcpy(p->out->data, p->m->data, sizeof_mat4);
     return OK;
+}
+
+int32_t glm_mat4_identity_init(CSOUND *csound, GLM_Mat4_identity *p)
+{
+    return check(csound, p);
 }
 
 int32_t glm_mat4_identity(CSOUND *, GLM_Mat4_identity *p)
@@ -24,10 +95,20 @@ int32_t glm_mat4_identity(CSOUND *, GLM_Mat4_identity *p)
     return OK;
 }
 
+int32_t glm_mat4_zero_init(CSOUND *csound, GLM_Mat4_zero *p)
+{
+    return check(csound, p);
+}
+
 int32_t glm_mat4_zero(CSOUND *, GLM_Mat4_zero *p)
 {
     memcpy(p->out->data, value_ptr(mat4_zero), sizeof_mat4);
     return OK;
+}
+
+int32_t glm_mat4_mul_init(CSOUND *csound, GLM_Mat4_mul *p)
+{
+    return check(csound, p);
 }
 
 int32_t glm_mat4_mul(CSOUND *, GLM_Mat4_mul *p)
@@ -40,6 +121,11 @@ int32_t glm_mat4_mul(CSOUND *, GLM_Mat4_mul *p)
     return OK;
 }
 
+int32_t glm_mat4_mulv3_init(CSOUND *csound, GLM_Mat4_mulv3 *p)
+{
+    return check(csound, p);
+}
+
 int32_t glm_mat4_mulv3(CSOUND *, GLM_Mat4_mulv3 *p)
 {
     const auto m = make_mat4(p->m->data);
@@ -48,6 +134,11 @@ int32_t glm_mat4_mulv3(CSOUND *, GLM_Mat4_mulv3 *p)
 
     memcpy(p->out->data, value_ptr(out), sizeof_vec3);
     return OK;
+}
+
+int32_t glm_mat4_quat_init(CSOUND *csound, GLM_Mat4_quat *p)
+{
+    return check(csound, p);
 }
 
 int32_t glm_mat4_quat(CSOUND *, GLM_Mat4_quat *p)
@@ -59,6 +150,11 @@ int32_t glm_mat4_quat(CSOUND *, GLM_Mat4_quat *p)
     return OK;
 }
 
+int32_t glm_mat4_transpose_init(CSOUND *csound, GLM_Mat4_transpose *p)
+{
+    return check(csound, p);
+}
+
 int32_t glm_mat4_transpose(CSOUND *, GLM_Mat4_transpose *p)
 {
     auto m = make_mat4(p->m->data);
@@ -66,6 +162,11 @@ int32_t glm_mat4_transpose(CSOUND *, GLM_Mat4_transpose *p)
 
     memcpy(p->m->data, value_ptr(m), sizeof_mat4);
     return OK;
+}
+
+int32_t glm_mat4_transpose_to_init(CSOUND *csound, GLM_Mat4_transpose_to *p)
+{
+    return check(csound, p);
 }
 
 int32_t glm_mat4_transpose_to(CSOUND *, GLM_Mat4_transpose_to *p)
@@ -77,6 +178,11 @@ int32_t glm_mat4_transpose_to(CSOUND *, GLM_Mat4_transpose_to *p)
     return OK;
 }
 
+int32_t glm_mat4_scale_init(CSOUND *csound, GLM_Mat4_scale *p)
+{
+    return check(csound, p);
+}
+
 int32_t glm_mat4_scale(CSOUND *, GLM_Mat4_scale *p)
 {
     const auto m = make_mat4(p->m->data);
@@ -86,11 +192,21 @@ int32_t glm_mat4_scale(CSOUND *, GLM_Mat4_scale *p)
     return OK;
 }
 
+int32_t glm_mat4_det_init(CSOUND *csound, GLM_Mat4_det *p)
+{
+    return check(csound, p);
+}
+
 int32_t glm_mat4_det(CSOUND *, GLM_Mat4_det *p)
 {
     const auto m = make_mat4(p->m->data);
     *p->out = determinant(m);
     return OK;
+}
+
+int32_t glm_mat4_inv_init(CSOUND *csound, GLM_Mat4_inv *p)
+{
+    return check(csound, p);
 }
 
 int32_t glm_mat4_inv(CSOUND *, GLM_Mat4_inv *p)

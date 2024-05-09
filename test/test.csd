@@ -16,10 +16,17 @@ sr = 48000
 kr = 4800
 0dbfs = 1
 
+gi_failures init 0
 gk_failures init 0
 
 #include "macros.orc"
 #include "test-mat4.orc"
+
+instr SumFailures
+    gi_failures -= 1
+    gk_failures += k(gi_failures)
+    turnoff()
+endin
 
 instr RunTests
     prints("\n")
@@ -35,7 +42,7 @@ instr RunTests
             ki += 1
             if (ki < nstrnum(p1)) then
                 printsk("\n")
-                event("i", ki, 0, p3)
+                event("i", "RunTest", 0, 1, ki)
                 kgoto end
             endif
         endif
@@ -54,6 +61,13 @@ instr RunTests
 
     event("i", "Exit", 0, 1)
 end:
+endin
+
+instr RunTest
+    ; prints("Incrementing gi_failures\n")
+    gi_failures += 1
+    ; prints("gi_failures = %d\n", gi_failures)
+    event_i("i", p4, 0, p3)
 endin
 
 instr Exit

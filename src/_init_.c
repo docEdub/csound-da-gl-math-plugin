@@ -9,7 +9,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
-        .iopadr = (SUBR) glm_mat4_copy,
+        .iopadr = (SUBR) glm_mat4_copy_init,
         .kopadr = (SUBR) glm_mat4_copy,
         .aopadr = NULL
     },
@@ -19,7 +19,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "",
-        .iopadr = (SUBR) glm_mat4_identity,
+        .iopadr = (SUBR) glm_mat4_identity_init,
         .kopadr = (SUBR) glm_mat4_identity,
         .aopadr = NULL
     },
@@ -29,7 +29,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "",
-        .iopadr = (SUBR) glm_mat4_zero,
+        .iopadr = (SUBR) glm_mat4_zero_init,
         .kopadr = (SUBR) glm_mat4_zero,
         .aopadr = NULL
     },
@@ -39,7 +39,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k[]",
-        .iopadr = (SUBR) glm_mat4_mul,
+        .iopadr = (SUBR) glm_mat4_mul_init,
         .kopadr = (SUBR) glm_mat4_mul,
         .aopadr = NULL
     },
@@ -49,7 +49,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k[]",
-        .iopadr = (SUBR) glm_mat4_mulv3,
+        .iopadr = (SUBR) glm_mat4_mulv3_init,
         .kopadr = (SUBR) glm_mat4_mulv3,
         .aopadr = NULL
     },
@@ -59,7 +59,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
-        .iopadr = (SUBR) glm_mat4_quat,
+        .iopadr = (SUBR) glm_mat4_quat_init,
         .kopadr = (SUBR) glm_mat4_quat,
         .aopadr = NULL
     },
@@ -69,7 +69,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "",
         .intypes = "k[]",
-        .iopadr = (SUBR) glm_mat4_transpose,
+        .iopadr = (SUBR) glm_mat4_transpose_init,
         .kopadr = (SUBR) glm_mat4_transpose,
         .aopadr = NULL
     },
@@ -79,7 +79,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
-        .iopadr = (SUBR) glm_mat4_transpose_to,
+        .iopadr = (SUBR) glm_mat4_transpose_to_init,
         .kopadr = (SUBR) glm_mat4_transpose_to,
         .aopadr = NULL
     },
@@ -89,7 +89,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k",
-        .iopadr = (SUBR) glm_mat4_scale,
+        .iopadr = (SUBR) glm_mat4_scale_init,
         .kopadr = (SUBR) glm_mat4_scale,
         .aopadr = NULL
     },
@@ -99,7 +99,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k",
         .intypes = "k[]",
-        .iopadr = (SUBR) glm_mat4_det,
+        .iopadr = (SUBR) glm_mat4_det_init,
         .kopadr = (SUBR) glm_mat4_det,
         .aopadr = NULL
     },
@@ -109,7 +109,7 @@ static OENTRY localops[] = {
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
-        .iopadr = (SUBR) glm_mat4_inv,
+        .iopadr = (SUBR) glm_mat4_inv_init,
         .kopadr = (SUBR) glm_mat4_inv,
         .aopadr = NULL
     },
