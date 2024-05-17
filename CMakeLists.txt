@@ -5,8 +5,10 @@ include("cmake/fetch_dependency.cmake")
 
 fetch_dependency(
     NAME CMakeCsoundPlugin
-    URL https://github.com/docEdub/CMakeCsoundPlugin/archive/refs/tags/2024.05.05.tar.gz
-    URL_MD5 8612d88f97ed40b36eada598e6a893dd
+    # URL https://github.com/docEdub/CMakeCsoundPlugin/archive/refs/tags/2024.05.05.tar.gz
+    # URL_MD5 8612d88f97ed40b36eada598e6a893dd
+    GIT_REPOSITORY git@github.com:docEdub/CMakeCsoundPlugin.git
+    GIT_TAG af9109c2bc436036645e9ea2e0210eeb7c33939a
 )
 
 project(csound-glm-plugin)
@@ -25,4 +27,6 @@ add_csound_plugin(
         "src/mat4.h"
     LIBRARIES
         glm::glm-header-only
+    TEST_ORCS
+        "test/test-mat4.orc"
 )

@@ -1,4 +1,7 @@
 
+#include "test-begin.orc"
+
+
 gk_vec3_a[] fillarray 0.1, 0.2, 0.3
 
 gk_mat4_identity[] fillarray \
@@ -215,3 +218,6 @@ $TEST(GLM_Mat4_inv)
     k_actual = GLM_Mat4_inv(gk_mat4_b)
     $ASSERT_EQUAL_kArray(gk_mat4_b_inverted ' k_actual)
 $END_TEST
+
+
+#include "test-end.orc"
