@@ -11,14 +11,14 @@ fetch_dependency(
     GIT_TAG af9109c2bc436036645e9ea2e0210eeb7c33939a
 )
 
-project(csound-glm-plugin)
-
-find_package(glm REQUIRED)
+project(csound-da-gl-math-plugin)
 
 set(CMAKE_CXX_STANDARD 11)
 
+find_package(glm REQUIRED)
+
 add_csound_plugin(
-    TARGET glm
+    TARGET DaGLMath
     SOURCES
         "src/_init_.c"
         "src/common.c"
