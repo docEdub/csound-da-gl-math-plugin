@@ -12,64 +12,68 @@ const size_t sizeof_vec3 = dvec3::length() * sizeof(dvec3::value_type);
 const dmat4 mat4_identity(1.0);
 const dmat4 mat4_zero(0.0);
 
+static const char *output = "output";
+static const char *arg1 = "arg1";
+static const char *arg2 = "arg2";
+
 static int32_t check(CSOUND *csound, DaGLMath_Mat4 *p)
 {
-    return check_Mat4(csound, p->out);
+    return check_Mat4(csound, p->out, output);
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->out);
-    result |= check_Mat4(csound, p->m);
+    result |= check_Mat4(csound, p->out, output);
+    result |= check_Mat4(csound, p->m, arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4_Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->out);
-    result |= check_Mat4(csound, p->m1);
-    result |= check_Mat4(csound, p->m2);
+    result |= check_Mat4(csound, p->out, output);
+    result |= check_Mat4(csound, p->m1, arg1);
+    result |= check_Mat4(csound, p->m2, arg2);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4_Val *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->out);
-    result |= check_Mat4(csound, p->m);
+    result |= check_Mat4(csound, p->out, output);
+    result |= check_Mat4(csound, p->m, arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Quat__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Quat(csound, p->out);
-    result |= check_Mat4(csound, p->m);
+    result |= check_Quat(csound, p->out, output);
+    result |= check_Mat4(csound, p->m, arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Val__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->m);
+    result |= check_Mat4(csound, p->m, arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4_Vec3 *p)
 {
     int32_t result = OK;
-    result |= check_Vec3(csound, p->out);
-    result |= check_Mat4(csound, p->m);
-    result |= check_Vec3(csound, p->v);
+    result |= check_Vec3(csound, p->out, output);
+    result |= check_Mat4(csound, p->m, arg1);
+    result |= check_Vec3(csound, p->v, arg2);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_void__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->m);
+    result |= check_Mat4(csound, p->m, arg1);
     return result;
 }
 
