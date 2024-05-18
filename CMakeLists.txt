@@ -8,7 +8,7 @@ fetch_dependency(
     # URL https://github.com/docEdub/CMakeCsoundPlugin/archive/refs/tags/2024.05.05.tar.gz
     # URL_MD5 8612d88f97ed40b36eada598e6a893dd
     GIT_REPOSITORY git@github.com:docEdub/CMakeCsoundPlugin.git
-    GIT_TAG d88b57340ef78c0e26ee64f96699569b4d1311c1
+    GIT_TAG 430cd18d989c01abfe712ce6016f470bece0ae7a
 )
 
 project(csound-da-gl-math-plugin)
