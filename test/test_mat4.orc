@@ -115,20 +115,30 @@ $END_TEST
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copy_ShouldFailWhenGivenWrongOutputArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT("Mat4: output must be 1-dimensional")
+
     k_actual[] init 16, 2
 
     k_actual = DaGLMath_Mat4_copy(gk_mat4_a)
-
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT("Mat4: output must be 1-dimensional")
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copy_ShouldFailWhenGivenWrongOutputArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT("Mat4: output must have 16 elements")
+
     k_actual[] init 17
 
     k_actual = DaGLMath_Mat4_copy(gk_mat4_a)
+$END_TEST_EXPECTED_INIT_FAIL
 
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT("Mat4: output must have 16 elements")
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copy_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT("Mat4: output must be 2-dimensional")
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT("Mat4: output must have 17 elements")
+
+    k_actual[] init 17, 2
+
+    k_actual = DaGLMath_Mat4_copy(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
