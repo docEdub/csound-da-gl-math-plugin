@@ -13,8 +13,8 @@ const dmat4 mat4_identity(1.0);
 const dmat4 mat4_zero(0.0);
 
 static const char *output = "output";
-static const char *arg1 = "arg1";
-static const char *arg2 = "arg2";
+static const char *arg1 = "argument 1";
+static const char *arg2 = "argument 2";
 
 static int32_t check(CSOUND *csound, DaGLMath_Mat4 *p)
 {
