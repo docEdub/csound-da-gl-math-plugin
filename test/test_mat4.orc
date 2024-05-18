@@ -115,20 +115,20 @@ $END_TEST
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copy_ShouldFailWhenGivenWrongOutputArrayDimensions)
-    gS_expectedMessages[] fillarray \
-        "Mat4: output must be 1-dimensional" \
-
     k_actual[] init 16, 2
+
     k_actual = DaGLMath_Mat4_copy(gk_mat4_a)
+
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT("Mat4: output must be 1-dimensional")
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copy_ShouldFailWhenGivenWrongOutputArraySize)
-    gS_expectedMessages[] fillarray \
-        "Mat4: output must have 16 elements" \
-
     k_actual[] init 17
+
     k_actual = DaGLMath_Mat4_copy(gk_mat4_a)
+
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT("Mat4: output must have 16 elements")
 $END_TEST_EXPECTED_INIT_FAIL
 
 
@@ -136,6 +136,7 @@ $TEST(DaGLMath_Mat4_identity)
     k_actual[] init 16
 
     k_actual = DaGLMath_Mat4_identity()
+
     $ASSERT_EQUAL_kArray(gk_mat4_identity ' k_actual)
 $END_TEST
 
@@ -144,18 +145,20 @@ $TEST(DaGLMath_Mat4_zero)
     k_actual[] init 16
 
     k_actual = DaGLMath_Mat4_zero()
+
     $ASSERT_EQUAL_kArray(gk_mat4_zero ' k_actual)
 $END_TEST
 
 
 $TEST(DaGLMath_Mat4_mul)
-    k_actual[] init 16
+    k_actual_axb[] init 16
+    k_actual_bxa[] init 16
 
-    k_actual = DaGLMath_Mat4_mul(gk_mat4_a, gk_mat4_b)
-    $ASSERT_EQUAL_kArray(gk_mat4_axb ' k_actual)
+    k_actual_axb = DaGLMath_Mat4_mul(gk_mat4_a, gk_mat4_b)
+    k_actual_bxa = DaGLMath_Mat4_mul(gk_mat4_b, gk_mat4_a)
 
-    k_actual = DaGLMath_Mat4_mul(gk_mat4_b, gk_mat4_a)
-    $ASSERT_EQUAL_kArray(gk_mat4_bxa ' k_actual)
+    $ASSERT_EQUAL_kArray(gk_mat4_axb ' k_actual_axb)
+    $ASSERT_EQUAL_kArray(gk_mat4_bxa ' k_actual_bxa)
 $END_TEST
 
 
@@ -164,6 +167,7 @@ $TEST(DaGLMath_Mat4_mulv3)
     k_actual[] init 3
 
     k_actual = DaGLMath_Mat4_mulv3(gk_mat4_a, gk_vec3_a)
+
     $ASSERT_EQUAL_kArray(k_expected ' k_actual)
 $END_TEST
 
@@ -173,70 +177,76 @@ $TEST(DaGLMath_Mat4_quat)
     k_actual[] init 4
 
     k_actual = DaGLMath_Mat4_quat(gk_mat4_a)
+
     $ASSERT_EQUAL_kArray(k_expected ' k_actual)
 $END_TEST
 
 
 $TEST(DaGLMath_Mat4_transpose)
-    k_actual[] init 16
+    k_actual_a[] init 16
+    k_actual_b[] init 16
 
-    k_actual = DaGLMath_Mat4_copy(gk_mat4_a)
-    DaGLMath_Mat4_transpose(k_actual)
-    $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual)
+    k_actual_a = DaGLMath_Mat4_copy(gk_mat4_a)
+    DaGLMath_Mat4_transpose(k_actual_a)
+    k_actual_b = DaGLMath_Mat4_copy(gk_mat4_b)
+    DaGLMath_Mat4_transpose(k_actual_b)
 
-    k_actual = DaGLMath_Mat4_copy(gk_mat4_b)
-    DaGLMath_Mat4_transpose(k_actual)
-    $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual)
+    $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual_a)
+    $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual_b)
 $END_TEST
 
 
 $TEST(DaGLMath_Mat4_transpose_to)
-    k_actual[] init 16
+    k_actual_a[] init 16
+    k_actual_b[] init 16
 
-    k_actual = DaGLMath_Mat4_transpose_to(gk_mat4_a)
-    $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual)
+    k_actual_a = DaGLMath_Mat4_transpose_to(gk_mat4_a)
+    k_actual_b = DaGLMath_Mat4_transpose_to(gk_mat4_b)
 
-    k_actual = DaGLMath_Mat4_transpose_to(gk_mat4_b)
-    $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual)
+    $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual_a)
+    $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual_b)
 $END_TEST
 
 
 $TEST(DaGLMath_Mat4_scale)
-    k_actual[] init 16
+    k_actual_a[] init 16
+    k_actual_b[] init 16
 
-    k_actual = DaGLMath_Mat4_scale(gk_mat4_a, 2)
-    $ASSERT_EQUAL_kArray(gk_mat4_a_scaled_x2 ' k_actual)
+    k_actual_a = DaGLMath_Mat4_scale(gk_mat4_a, 2)
+    k_actual_b = DaGLMath_Mat4_scale(gk_mat4_b, 2)
 
-    k_actual = DaGLMath_Mat4_scale(gk_mat4_b, 2)
-    $ASSERT_EQUAL_kArray(gk_mat4_b_scaled_x2 ' k_actual)
+    $ASSERT_EQUAL_kArray(gk_mat4_a_scaled_x2 ' k_actual_a)
+    $ASSERT_EQUAL_kArray(gk_mat4_b_scaled_x2 ' k_actual_b)
 $END_TEST
 
 
 $TEST(DaGLMath_Mat4_det)
-    k_actual init 0
+    k_actual_a init 0
+    k_actual_b init 0
+    k_actual_identity init 0
 
-    k_actual = DaGLMath_Mat4_det(gk_mat4_identity)
-    $ASSERT_EQUAL_k(1 ' k_actual)
+    k_actual_identity = DaGLMath_Mat4_det(gk_mat4_identity)
+    k_actual_a = DaGLMath_Mat4_det(gk_mat4_a)
+    k_actual_b = DaGLMath_Mat4_det(gk_mat4_b)
 
-    k_actual = DaGLMath_Mat4_det(gk_mat4_a)
-    $ASSERT_EQUAL_k(0 ' k_actual)
-
-    k_actual = DaGLMath_Mat4_det(gk_mat4_b)
-    $ASSERT_EQUAL_k(0 ' k_actual)
+    $ASSERT_EQUAL_k(0 ' k_actual_a)
+    $ASSERT_EQUAL_k(0 ' k_actual_b)
+    $ASSERT_EQUAL_k(1 ' k_actual_identity)
 $END_TEST
 
 
 $TEST(DaGLMath_Mat4_inv)
-    k_actual[] init 16
+    k_actual_a[] init 16
+    k_actual_b[] init 16
+    k_actual_identity[] init 16
 
-    k_actual = DaGLMath_Mat4_inv(gk_mat4_identity)
-    $ASSERT_EQUAL_kArray(gk_mat4_identity ' k_actual)
+    k_actual_a = DaGLMath_Mat4_inv(gk_mat4_a)
+    k_actual_b = DaGLMath_Mat4_inv(gk_mat4_b)
+    k_actual_identity = DaGLMath_Mat4_inv(gk_mat4_identity)
 
-    k_actual = DaGLMath_Mat4_inv(gk_mat4_a)
-    $ASSERT_EQUAL_kArray(gk_mat4_a_inverted ' k_actual)
-
-    k_actual = DaGLMath_Mat4_inv(gk_mat4_b)
-    $ASSERT_EQUAL_kArray(gk_mat4_b_inverted ' k_actual)
+    $ASSERT_EQUAL_kArray(gk_mat4_a_inverted ' k_actual_a)
+    $ASSERT_EQUAL_kArray(gk_mat4_b_inverted ' k_actual_b)
+    $ASSERT_EQUAL_kArray(gk_mat4_identity ' k_actual_identity)
 $END_TEST
 
 
