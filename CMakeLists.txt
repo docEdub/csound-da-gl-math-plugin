@@ -8,7 +8,7 @@ fetch_dependency(
     # URL https://github.com/docEdub/CMakeCsoundPlugin/archive/refs/tags/2024.05.05.tar.gz
     # URL_MD5 8612d88f97ed40b36eada598e6a893dd
     GIT_REPOSITORY git@github.com:docEdub/CMakeCsoundPlugin.git
-    GIT_TAG af9109c2bc436036645e9ea2e0210eeb7c33939a
+    GIT_TAG 9fd337b2fef576194149d3af174a0f75309a60c5
 )
 
 project(csound-da-gl-math-plugin)
@@ -28,5 +28,5 @@ add_csound_plugin(
     LIBRARIES
         glm::glm-header-only
     TEST_ORCS
-        "test/test-mat4.orc"
+        "test/test.orc"
 )
