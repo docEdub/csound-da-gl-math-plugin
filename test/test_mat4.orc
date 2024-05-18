@@ -1,6 +1,8 @@
 
 #include "test-begin.orc"
 
+$TEST_FILE(test_mat4)
+
 
 gk_vec3_a[] fillarray 0.1, 0.2, 0.3
 
@@ -111,23 +113,21 @@ $TEST(DaGLMath_Mat4_copy)
     $ASSERT_EQUAL_kArray(gk_mat4_b ' k_actual)
 $END_TEST
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copyShouldFailWhenGivenWrongArraySize)
-gS_testInitFailureMesssage = {{
-INIT ERROR in instr 2 (opcode DaGLMath_Mat4_copy) line 121: Mat4: output must have 16 elements
- from file test/test-mat4.orc (2), from file /Users/andy/-/code/csound-glm-plugin/test/test.orc (1),k_actual	DaGLMath_Mat4_copy	gk_mat4_a\t
-		   T  0.000 - note deleted.  i2 had 1 init errors
-}}
-    k_actual[] init 17
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copy_ShouldFailWhenGivenWrongOutputArrayDimensions)
+    gS_expectedMessages[] fillarray \
+        "Mat4: output must be 1-dimensional" \
+
+    k_actual[] init 16, 2
     k_actual = DaGLMath_Mat4_copy(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copyShouldFailWhenGivenWrongArrayDimensions)
-gS_testInitFailureMesssage = {{
-INIT ERROR in instr 2 (opcode DaGLMath_Mat4_copy) line 121: Mat4: output must have 16 elements
- from file /Users/andy/-/code/csound-glm-plugin/test/test-mat4.orc (1),k_actual	DaGLMath_Mat4_copy	gk_mat4_a
-		   T  0.000 - note deleted.  i2 had 1 init errors
-}}
-    k_actual[] init 17, 2
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copy_ShouldFailWhenGivenWrongOutputArraySize)
+    gS_expectedMessages[] fillarray \
+        "Mat4: output must have 16 elements" \
+
+    k_actual[] init 17
     k_actual = DaGLMath_Mat4_copy(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
