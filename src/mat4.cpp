@@ -154,12 +154,12 @@ int32_t da_gl_math_mat4_quat(CSOUND *, DaGLMath_Mat4_quat *p)
     return OK;
 }
 
-int32_t da_gl_math_mat4_transpose_init(CSOUND *csound, DaGLMath_Mat4_transpose *p)
+int32_t da_gl_math_mat4_transposeInPlace_init(CSOUND *csound, DaGLMath_Mat4_transposeInPlace *p)
 {
     return check(csound, p);
 }
 
-int32_t da_gl_math_mat4_transpose(CSOUND *, DaGLMath_Mat4_transpose *p)
+int32_t da_gl_math_mat4_transposeInPlace(CSOUND *, DaGLMath_Mat4_transposeInPlace *p)
 {
     auto m = make_mat4(p->m->data);
     m = transpose(m);
@@ -168,12 +168,12 @@ int32_t da_gl_math_mat4_transpose(CSOUND *, DaGLMath_Mat4_transpose *p)
     return OK;
 }
 
-int32_t da_gl_math_mat4_transpose_to_init(CSOUND *csound, DaGLMath_Mat4_transpose_to *p)
+int32_t da_gl_math_mat4_transpose_init(CSOUND *csound, DaGLMath_Mat4_transpose *p)
 {
     return check(csound, p);
 }
 
-int32_t da_gl_math_mat4_transpose_to(CSOUND *, DaGLMath_Mat4_transpose_to *p)
+int32_t da_gl_math_mat4_transpose(CSOUND *, DaGLMath_Mat4_transpose *p)
 {
     const auto m = make_mat4(p->m->data);
     const auto out = transpose(m);

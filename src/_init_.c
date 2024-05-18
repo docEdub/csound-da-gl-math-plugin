@@ -64,23 +64,23 @@ static OENTRY localops[] = {
         .aopadr = NULL
     },
     {
-        .opname = "DaGLMath_Mat4_transpose",
-        .dsblksiz = sizeof(DaGLMath_Mat4_transpose),
+        .opname = "DaGLMath_Mat4_transposeInPlace",
+        .dsblksiz = sizeof(DaGLMath_Mat4_transposeInPlace),
         .thread = 3,
         .outypes = "",
         .intypes = "k[]",
-        .iopadr = (SUBR) da_gl_math_mat4_transpose_init,
-        .kopadr = (SUBR) da_gl_math_mat4_transpose,
+        .iopadr = (SUBR) da_gl_math_mat4_transposeInPlace_init,
+        .kopadr = (SUBR) da_gl_math_mat4_transposeInPlace,
         .aopadr = NULL
     },
     {
-        .opname = "DaGLMath_Mat4_transpose_to",
-        .dsblksiz = sizeof(DaGLMath_Mat4_transpose_to),
+        .opname = "DaGLMath_Mat4_transpose",
+        .dsblksiz = sizeof(DaGLMath_Mat4_transpose),
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
-        .iopadr = (SUBR) da_gl_math_mat4_transpose_to_init,
-        .kopadr = (SUBR) da_gl_math_mat4_transpose_to,
+        .iopadr = (SUBR) da_gl_math_mat4_transpose_init,
+        .kopadr = (SUBR) da_gl_math_mat4_transpose,
         .aopadr = NULL
     },
     {

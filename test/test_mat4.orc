@@ -434,35 +434,105 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quat_ShouldFailWhenGivenWrongArgument1Arr
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST(DaGLMath_Mat4_transpose)
+$TEST(DaGLMath_Mat4_transposeInPlace)
     k_actual_a[] init 16
     k_actual_b[] init 16
 
     k_actual_a = DaGLMath_Mat4_copy(gk_mat4_a)
-    DaGLMath_Mat4_transpose(k_actual_a)
+    DaGLMath_Mat4_transposeInPlace(k_actual_a)
     k_actual_b = DaGLMath_Mat4_copy(gk_mat4_b)
-    DaGLMath_Mat4_transpose(k_actual_b)
+    DaGLMath_Mat4_transposeInPlace(k_actual_b)
 
     $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual_a)
     $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual_b)
 $END_TEST
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transposeInPlace_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
 
     k_arg1[] init 16, 2
 
-    DaGLMath_Mat4_transpose(k_arg1)
+    DaGLMath_Mat4_transposeInPlace(k_arg1)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transposeInPlace_ShouldFailWhenGivenWrongArgument1ArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
+
+    k_arg1[] init 17
+
+    DaGLMath_Mat4_transposeInPlace(k_arg1)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transposeInPlace_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
+
+    k_arg1[] init 17, 2
+
+    DaGLMath_Mat4_transposeInPlace(k_arg1)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST(DaGLMath_Mat4_transpose)
+    k_actual_a[] init 16
+    k_actual_b[] init 16
+
+    k_actual_a = DaGLMath_Mat4_transpose(gk_mat4_a)
+    k_actual_b = DaGLMath_Mat4_transpose(gk_mat4_b)
+
+    $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual_a)
+    $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual_b)
+$END_TEST
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_ShouldFailWhenGivenWrongOutputArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArrayDimensionsMessage)
+
+    k_actual[] init 16, 2
+
+    k_actual = DaGLMath_Mat4_transpose(gk_mat4_a)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_ShouldFailWhenGivenWrongOutputArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArraySizeMessage)
+
+    k_actual[] init 17
+
+    k_actual = DaGLMath_Mat4_transpose(gk_mat4_a)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArraySizeMessage)
+
+    k_actual[] init 17, 2
+
+    k_actual = DaGLMath_Mat4_transpose(gk_mat4_a)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
+
+    k_actual[] init 16
+    k_arg1[] init 16, 2
+
+    k_actual = DaGLMath_Mat4_transpose(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_ShouldFailWhenGivenWrongArgument1ArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
+    k_actual[] init 16
     k_arg1[] init 17
 
-    DaGLMath_Mat4_transpose(k_arg1)
+    k_actual = DaGLMath_Mat4_transpose(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
@@ -470,80 +540,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_ShouldFailWhenGivenWrongArgumen
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
-    k_arg1[] init 17, 2
-
-    DaGLMath_Mat4_transpose(k_arg1)
-$END_TEST_EXPECTED_INIT_FAIL
-
-
-$TEST(DaGLMath_Mat4_transpose_to)
-    k_actual_a[] init 16
-    k_actual_b[] init 16
-
-    k_actual_a = DaGLMath_Mat4_transpose_to(gk_mat4_a)
-    k_actual_b = DaGLMath_Mat4_transpose_to(gk_mat4_b)
-
-    $ASSERT_EQUAL_kArray(gk_mat4_a_transposed ' k_actual_a)
-    $ASSERT_EQUAL_kArray(gk_mat4_b_transposed ' k_actual_b)
-$END_TEST
-
-
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_to_ShouldFailWhenGivenWrongOutputArrayDimensions)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArrayDimensionsMessage)
-
-    k_actual[] init 16, 2
-
-    k_actual = DaGLMath_Mat4_transpose_to(gk_mat4_a)
-$END_TEST_EXPECTED_INIT_FAIL
-
-
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_to_ShouldFailWhenGivenWrongOutputArraySize)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArraySizeMessage)
-
-    k_actual[] init 17
-
-    k_actual = DaGLMath_Mat4_transpose_to(gk_mat4_a)
-$END_TEST_EXPECTED_INIT_FAIL
-
-
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_to_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArrayDimensionsMessage)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArraySizeMessage)
-
-    k_actual[] init 17, 2
-
-    k_actual = DaGLMath_Mat4_transpose_to(gk_mat4_a)
-$END_TEST_EXPECTED_INIT_FAIL
-
-
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_to_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
-
-    k_actual[] init 16
-    k_arg1[] init 16, 2
-
-    k_actual = DaGLMath_Mat4_transpose_to(k_arg1)
-$END_TEST_EXPECTED_INIT_FAIL
-
-
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_to_ShouldFailWhenGivenWrongArgument1ArraySize)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
-
-    k_actual[] init 16
-    k_arg1[] init 17
-
-    k_actual = DaGLMath_Mat4_transpose_to(k_arg1)
-$END_TEST_EXPECTED_INIT_FAIL
-
-
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_to_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
-
     k_actual[] init 16
     k_arg1[] init 17, 2
 
-    k_actual = DaGLMath_Mat4_transpose_to(k_arg1)
+    k_actual = DaGLMath_Mat4_transpose(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
