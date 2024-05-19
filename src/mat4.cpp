@@ -38,7 +38,7 @@ static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4_Mat4 *p)
     return result;
 }
 
-static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4_Val *p)
+static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4_Num *p)
 {
     int32_t result = OK;
     result |= check_Mat4(csound, p->out, output);
@@ -54,7 +54,7 @@ static int32_t check(CSOUND *csound, DaGLMath_Quat__Mat4 *p)
     return result;
 }
 
-static int32_t check(CSOUND *csound, DaGLMath_Val__Mat4 *p)
+static int32_t check(CSOUND *csound, DaGLMath_Num__Mat4 *p)
 {
     int32_t result = OK;
     result |= check_Mat4(csound, p->m, arg1);

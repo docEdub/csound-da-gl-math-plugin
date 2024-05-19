@@ -39,11 +39,11 @@ typedef DaGLMath_Mat4__Mat4                                         DaGLMath_Mat
 int32_t da_gl_math_mat4_transpose_init          (CSOUND *csound,    DaGLMath_Mat4_transpose *p);
 int32_t da_gl_math_mat4_transpose               (CSOUND *csound,    DaGLMath_Mat4_transpose *p);
 
-typedef DaGLMath_Mat4__Mat4_Val                                     DaGLMath_Mat4_scale;
+typedef DaGLMath_Mat4__Mat4_Num                                     DaGLMath_Mat4_scale;
 int32_t da_gl_math_mat4_scale_init              (CSOUND *csound,    DaGLMath_Mat4_scale *p);
 int32_t da_gl_math_mat4_scale                   (CSOUND *csound,    DaGLMath_Mat4_scale *p);
 
-typedef DaGLMath_Val__Mat4                                          DaGLMath_Mat4_determinant;
+typedef DaGLMath_Num__Mat4                                          DaGLMath_Mat4_determinant;
 int32_t da_gl_math_mat4_determinant_init        (CSOUND *csound,    DaGLMath_Mat4_determinant *p);
 int32_t da_gl_math_mat4_determinant             (CSOUND *csound,    DaGLMath_Mat4_determinant *p);
 
