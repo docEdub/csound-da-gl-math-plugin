@@ -34,33 +34,33 @@ static OENTRY localops[] = {
         .aopadr = NULL
     },
     {
-        .opname = "DaGLMath_Mat4_mul",
-        .dsblksiz = sizeof(DaGLMath_Mat4_mul),
+        .opname = "DaGLMath_Mat4_multiply",
+        .dsblksiz = sizeof(DaGLMath_Mat4_multiply),
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k[]",
-        .iopadr = (SUBR) da_gl_math_mat4_mul_init,
-        .kopadr = (SUBR) da_gl_math_mat4_mul,
+        .iopadr = (SUBR) da_gl_math_mat4_multiply_init,
+        .kopadr = (SUBR) da_gl_math_mat4_multiply,
         .aopadr = NULL
     },
     {
-        .opname = "DaGLMath_Mat4_mulv3",
-        .dsblksiz = sizeof(DaGLMath_Mat4_mulv3),
+        .opname = "DaGLMath_Mat4_multiplyVec3",
+        .dsblksiz = sizeof(DaGLMath_Mat4_multiplyVec3),
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k[]",
-        .iopadr = (SUBR) da_gl_math_mat4_mulv3_init,
-        .kopadr = (SUBR) da_gl_math_mat4_mulv3,
+        .iopadr = (SUBR) da_gl_math_mat4_multiplyVec3_init,
+        .kopadr = (SUBR) da_gl_math_mat4_multiplyVec3,
         .aopadr = NULL
     },
     {
-        .opname = "DaGLMath_Mat4_quat",
-        .dsblksiz = sizeof(DaGLMath_Mat4_quat),
+        .opname = "DaGLMath_Mat4_quaternion",
+        .dsblksiz = sizeof(DaGLMath_Mat4_quaternion),
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
-        .iopadr = (SUBR) da_gl_math_mat4_quat_init,
-        .kopadr = (SUBR) da_gl_math_mat4_quat,
+        .iopadr = (SUBR) da_gl_math_mat4_quaternion_init,
+        .kopadr = (SUBR) da_gl_math_mat4_quaternion,
         .aopadr = NULL
     },
     {
@@ -94,23 +94,23 @@ static OENTRY localops[] = {
         .aopadr = NULL
     },
     {
-        .opname = "DaGLMath_Mat4_det",
-        .dsblksiz = sizeof(DaGLMath_Mat4_det),
+        .opname = "DaGLMath_Mat4_determinant",
+        .dsblksiz = sizeof(DaGLMath_Mat4_determinant),
         .thread = 3,
         .outypes = "k",
         .intypes = "k[]",
-        .iopadr = (SUBR) da_gl_math_mat4_det_init,
-        .kopadr = (SUBR) da_gl_math_mat4_det,
+        .iopadr = (SUBR) da_gl_math_mat4_determinant_init,
+        .kopadr = (SUBR) da_gl_math_mat4_determinant,
         .aopadr = NULL
     },
     {
-        .opname = "DaGLMath_Mat4_inv",
-        .dsblksiz = sizeof(DaGLMath_Mat4_inv),
+        .opname = "DaGLMath_Mat4_invert",
+        .dsblksiz = sizeof(DaGLMath_Mat4_invert),
         .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
-        .iopadr = (SUBR) da_gl_math_mat4_inv_init,
-        .kopadr = (SUBR) da_gl_math_mat4_inv,
+        .iopadr = (SUBR) da_gl_math_mat4_invert_init,
+        .kopadr = (SUBR) da_gl_math_mat4_invert,
         .aopadr = NULL
     },
 };

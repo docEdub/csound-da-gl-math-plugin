@@ -151,69 +151,69 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_zero_ShouldFailWhenGivenWrongOutputArrayD
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST(DaGLMath_Mat4_mul)
+$TEST(DaGLMath_Mat4_multiply)
     k_actual_axb[] init 16
     k_actual_bxa[] init 16
 
-    k_actual_axb = DaGLMath_Mat4_mul(gk_mat4_a, gk_mat4_b)
-    k_actual_bxa = DaGLMath_Mat4_mul(gk_mat4_b, gk_mat4_a)
+    k_actual_axb = DaGLMath_Mat4_multiply(gk_mat4_a, gk_mat4_b)
+    k_actual_bxa = DaGLMath_Mat4_multiply(gk_mat4_b, gk_mat4_a)
 
     $ASSERT_EQUAL_kArray(gk_mat4_axb ' k_actual_axb)
     $ASSERT_EQUAL_kArray(gk_mat4_bxa ' k_actual_bxa)
 $END_TEST
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongOutputArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongOutputArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArrayDimensionsMessage)
 
     k_actual[] init 16, 2
 
-    k_actual = DaGLMath_Mat4_mul(gk_mat4_a, gk_mat4_b)
+    k_actual = DaGLMath_Mat4_multiply(gk_mat4_a, gk_mat4_b)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongOutputArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongOutputArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArraySizeMessage)
 
     k_actual[] init 17
 
-    k_actual = DaGLMath_Mat4_mul(gk_mat4_a, gk_mat4_b)
+    k_actual = DaGLMath_Mat4_multiply(gk_mat4_a, gk_mat4_b)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArraySizeMessage)
 
     k_actual[] init 17, 2
 
-    k_actual = DaGLMath_Mat4_mul(gk_mat4_a, gk_mat4_b)
+    k_actual = DaGLMath_Mat4_multiply(gk_mat4_a, gk_mat4_b)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
 
     k_actual[] init 16
     k_arg1[] init 16, 2
     k_arg2[] init 16
 
-    k_actual = DaGLMath_Mat4_mul(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiply(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument1ArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument1ArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
     k_actual[] init 16
     k_arg1[] init 17
     k_arg2[] init 16
 
-    k_actual = DaGLMath_Mat4_mul(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiply(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
@@ -221,33 +221,33 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument1Arra
     k_arg1[] init 17, 2
     k_arg2[] init 16
 
-    k_actual = DaGLMath_Mat4_mul(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiply(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument2ArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument2ArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument2ArrayDimensionsMessage)
 
     k_actual[] init 16
     k_arg1[] init 16
     k_arg2[] init 16, 2
 
-    k_actual = DaGLMath_Mat4_mul(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiply(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument2ArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument2ArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument2ArraySizeMessage)
 
     k_actual[] init 16
     k_arg1[] init 16
     k_arg2[] init 17
 
-    k_actual = DaGLMath_Mat4_mul(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiply(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument2ArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument2ArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument2ArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument2ArraySizeMessage)
 
@@ -255,71 +255,71 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument2Arra
     k_arg1[] init 16
     k_arg2[] init 17, 2
 
-    k_actual = DaGLMath_Mat4_mul(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiply(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST(DaGLMath_Mat4_mulv3)
+$TEST(DaGLMath_Mat4_multiplyVec3)
     k_expected[] fillarray 1.46, 1.52, 1.58
     k_actual[] init 3
 
-    k_actual = DaGLMath_Mat4_mulv3(gk_mat4_a, gk_vec3_a)
+    k_actual = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
 
     $ASSERT_EQUAL_kArray(k_expected ' k_actual)
 $END_TEST
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongOutputArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongOutputArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArrayDimensionsMessage)
 
     k_actual[] init 3, 2
 
-    k_actual = DaGLMath_Mat4_mulv3(gk_mat4_a, gk_vec3_a)
+    k_actual = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongOutputArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongOutputArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArraySizeMessage)
 
     k_actual[] init 4
 
-    k_actual = DaGLMath_Mat4_mulv3(gk_mat4_a, gk_vec3_a)
+    k_actual = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArraySizeMessage)
 
     k_actual[] init 4, 2
 
-    k_actual = DaGLMath_Mat4_mulv3(gk_mat4_a, gk_vec3_a)
+    k_actual = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
 
     k_actual[] init 16
     k_arg1[] init 16, 2
     k_arg2[] init 3
 
-    k_actual = DaGLMath_Mat4_mulv3(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongArgument1ArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument1ArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
     k_actual[] init 16
     k_arg1[] init 17
     k_arg2[] init 3
 
-    k_actual = DaGLMath_Mat4_mulv3(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
@@ -327,33 +327,33 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongArgument1Ar
     k_arg1[] init 17, 2
     k_arg2[] init 3
 
-    k_actual = DaGLMath_Mat4_mulv3(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mul_ShouldFailWhenGivenWrongArgument2ArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument2ArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArrayDimensionsMessage)
 
     k_actual[] init 16
     k_arg1[] init 16
     k_arg2[] init 3, 2
 
-    k_actual = DaGLMath_Mat4_mulv3(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongArgument2ArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument2ArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArraySizeMessage)
 
     k_actual[] init 16
     k_arg1[] init 16
     k_arg2[] init 4
 
-    k_actual = DaGLMath_Mat4_mulv3(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongArgument2ArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument2ArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArraySizeMessage)
 
@@ -361,76 +361,76 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongArgument2Ar
     k_arg1[] init 16
     k_arg2[] init 4, 2
 
-    k_actual = DaGLMath_Mat4_mulv3(k_arg1, k_arg2)
+    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST(DaGLMath_Mat4_quat)
+$TEST(DaGLMath_Mat4_quaternion)
     k_expected[] fillarray -0.163232, 0.326464, -0.163232, 1.378405
     k_actual[] init 4
 
-    k_actual = DaGLMath_Mat4_quat(gk_mat4_a)
+    k_actual = DaGLMath_Mat4_quaternion(gk_mat4_a)
 
     $ASSERT_EQUAL_kArray(k_expected ' k_actual)
 $END_TEST
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quat_ShouldFailWhenGivenWrongOutputArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quaternion_ShouldFailWhenGivenWrongOutputArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Quat_WrongOutputArrayDimensionsMessage)
 
     k_actual[] init 4, 2
 
-    k_actual = DaGLMath_Mat4_quat(gk_mat4_a)
+    k_actual = DaGLMath_Mat4_quaternion(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quat_ShouldFailWhenGivenWrongOutputArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quaternion_ShouldFailWhenGivenWrongOutputArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Quat_WrongOutputArraySizeMessage)
 
     k_actual[] init 5
 
-    k_actual = DaGLMath_Mat4_quat(gk_mat4_a)
+    k_actual = DaGLMath_Mat4_quaternion(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_mulv3_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quaternion_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Quat_WrongOutputArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Quat_WrongOutputArraySizeMessage)
 
     k_actual[] init 5, 2
 
-    k_actual = DaGLMath_Mat4_quat(gk_mat4_a)
+    k_actual = DaGLMath_Mat4_quaternion(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quat_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quaternion_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
 
     k_actual[] init 4
     k_arg1[] init 16, 2
 
-    k_actual = DaGLMath_Mat4_quat(k_arg1)
+    k_actual = DaGLMath_Mat4_quaternion(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quat_ShouldFailWhenGivenWrongArgument1ArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quaternion_ShouldFailWhenGivenWrongArgument1ArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
     k_actual[] init 4
     k_arg1[] init 17
 
-    k_actual = DaGLMath_Mat4_quat(k_arg1)
+    k_actual = DaGLMath_Mat4_quaternion(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quat_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quaternion_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
     k_actual[] init 4
     k_arg1[] init 17, 2
 
-    k_actual = DaGLMath_Mat4_quat(k_arg1)
+    k_actual = DaGLMath_Mat4_quaternion(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
@@ -618,14 +618,14 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_scale_ShouldFailWhenGivenWrongArgument1Ar
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST(DaGLMath_Mat4_det)
+$TEST(DaGLMath_Mat4_determinant)
     k_actual_a init 0
     k_actual_b init 0
     k_actual_identity init 0
 
-    k_actual_identity = DaGLMath_Mat4_det(gk_mat4_identity)
-    k_actual_a = DaGLMath_Mat4_det(gk_mat4_a)
-    k_actual_b = DaGLMath_Mat4_det(gk_mat4_b)
+    k_actual_identity = DaGLMath_Mat4_determinant(gk_mat4_identity)
+    k_actual_a = DaGLMath_Mat4_determinant(gk_mat4_a)
+    k_actual_b = DaGLMath_Mat4_determinant(gk_mat4_b)
 
     $ASSERT_EQUAL_k(0 ' k_actual_a)
     $ASSERT_EQUAL_k(0 ' k_actual_b)
@@ -633,45 +633,45 @@ $TEST(DaGLMath_Mat4_det)
 $END_TEST
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_det_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_determinant_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
 
     k_actual init 0
     k_arg1[] init 16, 2
 
-    k_actual = DaGLMath_Mat4_det(k_arg1)
+    k_actual = DaGLMath_Mat4_determinant(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_det_ShouldFailWhenGivenWrongArgument1ArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_determinant_ShouldFailWhenGivenWrongArgument1ArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
     k_actual init 0
     k_arg1[] init 17
 
-    k_actual = DaGLMath_Mat4_det(k_arg1)
+    k_actual = DaGLMath_Mat4_determinant(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_det_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_determinant_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
     k_actual init 0
     k_arg1[] init 17, 2
 
-    k_actual = DaGLMath_Mat4_det(k_arg1)
+    k_actual = DaGLMath_Mat4_determinant(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST(DaGLMath_Mat4_inv)
+$TEST(DaGLMath_Mat4_invert)
     k_actual_a[] init 16
     k_actual_b[] init 16
     k_actual_identity[] init 16
 
-    k_actual_a = DaGLMath_Mat4_inv(gk_mat4_a)
-    k_actual_b = DaGLMath_Mat4_inv(gk_mat4_b)
-    k_actual_identity = DaGLMath_Mat4_inv(gk_mat4_identity)
+    k_actual_a = DaGLMath_Mat4_invert(gk_mat4_a)
+    k_actual_b = DaGLMath_Mat4_invert(gk_mat4_b)
+    k_actual_identity = DaGLMath_Mat4_invert(gk_mat4_identity)
 
     $ASSERT_EQUAL_kArray(gk_mat4_a_inverted ' k_actual_a)
     $ASSERT_EQUAL_kArray(gk_mat4_b_inverted ' k_actual_b)
@@ -679,62 +679,62 @@ $TEST(DaGLMath_Mat4_inv)
 $END_TEST
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_inv_ShouldFailWhenGivenWrongOutputArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_invert_ShouldFailWhenGivenWrongOutputArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArrayDimensionsMessage)
 
     k_actual[] init 16, 2
 
-    k_actual = DaGLMath_Mat4_inv(gk_mat4_a)
+    k_actual = DaGLMath_Mat4_invert(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_inv_ShouldFailWhenGivenWrongOutputArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_invert_ShouldFailWhenGivenWrongOutputArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArraySizeMessage)
 
     k_actual[] init 17
 
-    k_actual = DaGLMath_Mat4_inv(gk_mat4_a)
+    k_actual = DaGLMath_Mat4_invert(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_inv_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_invert_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongOutputArraySizeMessage)
 
     k_actual[] init 17, 2
 
-    k_actual = DaGLMath_Mat4_inv(gk_mat4_a)
+    k_actual = DaGLMath_Mat4_invert(gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_inv_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_invert_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
 
     k_actual[] init 16
     k_arg1[] init 16, 2
 
-    k_actual = DaGLMath_Mat4_inv(k_arg1)
+    k_actual = DaGLMath_Mat4_invert(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_inv_ShouldFailWhenGivenWrongArgument1ArraySize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_invert_ShouldFailWhenGivenWrongArgument1ArraySize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
     k_actual[] init 16
     k_arg1[] init 17
 
-    k_actual = DaGLMath_Mat4_inv(k_arg1)
+    k_actual = DaGLMath_Mat4_invert(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
-$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_inv_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_invert_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
     $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
 
     k_actual[] init 16
     k_arg1[] init 17, 2
 
-    k_actual = DaGLMath_Mat4_inv(k_arg1)
+    k_actual = DaGLMath_Mat4_invert(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
 
 

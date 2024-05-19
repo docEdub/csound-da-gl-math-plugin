@@ -110,12 +110,12 @@ int32_t da_gl_math_mat4_zero(CSOUND *, DaGLMath_Mat4_zero *p)
     return OK;
 }
 
-int32_t da_gl_math_mat4_mul_init(CSOUND *csound, DaGLMath_Mat4_mul *p)
+int32_t da_gl_math_mat4_multiply_init(CSOUND *csound, DaGLMath_Mat4_multiply *p)
 {
     return check(csound, p);
 }
 
-int32_t da_gl_math_mat4_mul(CSOUND *, DaGLMath_Mat4_mul *p)
+int32_t da_gl_math_mat4_multiply(CSOUND *, DaGLMath_Mat4_multiply *p)
 {
     const auto m1 = make_mat4(p->m1->data);
     const auto m2 = make_mat4(p->m2->data);
@@ -125,12 +125,12 @@ int32_t da_gl_math_mat4_mul(CSOUND *, DaGLMath_Mat4_mul *p)
     return OK;
 }
 
-int32_t da_gl_math_mat4_mulv3_init(CSOUND *csound, DaGLMath_Mat4_mulv3 *p)
+int32_t da_gl_math_mat4_multiplyVec3_init(CSOUND *csound, DaGLMath_Mat4_multiplyVec3 *p)
 {
     return check(csound, p);
 }
 
-int32_t da_gl_math_mat4_mulv3(CSOUND *, DaGLMath_Mat4_mulv3 *p)
+int32_t da_gl_math_mat4_multiplyVec3(CSOUND *, DaGLMath_Mat4_multiplyVec3 *p)
 {
     const auto m = make_mat4(p->m->data);
     const auto v = dvec4(make_vec3(p->v->data), 1.0);
@@ -140,12 +140,12 @@ int32_t da_gl_math_mat4_mulv3(CSOUND *, DaGLMath_Mat4_mulv3 *p)
     return OK;
 }
 
-int32_t da_gl_math_mat4_quat_init(CSOUND *csound, DaGLMath_Mat4_quat *p)
+int32_t da_gl_math_mat4_quaternion_init(CSOUND *csound, DaGLMath_Mat4_quaternion *p)
 {
     return check(csound, p);
 }
 
-int32_t da_gl_math_mat4_quat(CSOUND *, DaGLMath_Mat4_quat *p)
+int32_t da_gl_math_mat4_quaternion(CSOUND *, DaGLMath_Mat4_quaternion *p)
 {
     const auto m = make_mat4(p->m->data);
     const auto out = quat_cast(m);
@@ -196,24 +196,24 @@ int32_t da_gl_math_mat4_scale(CSOUND *, DaGLMath_Mat4_scale *p)
     return OK;
 }
 
-int32_t da_gl_math_mat4_det_init(CSOUND *csound, DaGLMath_Mat4_det *p)
+int32_t da_gl_math_mat4_determinant_init(CSOUND *csound, DaGLMath_Mat4_determinant *p)
 {
     return check(csound, p);
 }
 
-int32_t da_gl_math_mat4_det(CSOUND *, DaGLMath_Mat4_det *p)
+int32_t da_gl_math_mat4_determinant(CSOUND *, DaGLMath_Mat4_determinant *p)
 {
     const auto m = make_mat4(p->m->data);
     *p->out = determinant(m);
     return OK;
 }
 
-int32_t da_gl_math_mat4_inv_init(CSOUND *csound, DaGLMath_Mat4_inv *p)
+int32_t da_gl_math_mat4_invert_init(CSOUND *csound, DaGLMath_Mat4_invert *p)
 {
     return check(csound, p);
 }
 
-int32_t da_gl_math_mat4_inv(CSOUND *, DaGLMath_Mat4_inv *p)
+int32_t da_gl_math_mat4_invert(CSOUND *, DaGLMath_Mat4_invert *p)
 {
     const auto m = make_mat4(p->m->data);
     const auto out = inverse(m);

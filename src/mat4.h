@@ -19,17 +19,17 @@ typedef DaGLMath_Mat4                                               DaGLMath_Mat
 int32_t da_gl_math_mat4_zero_init               (CSOUND *csound,    DaGLMath_Mat4 *p);
 int32_t da_gl_math_mat4_zero                    (CSOUND *csound,    DaGLMath_Mat4 *p);
 
-typedef DaGLMath_Mat4__Mat4_Mat4                                    DaGLMath_Mat4_mul;
-int32_t da_gl_math_mat4_mul_init                (CSOUND *csound,    DaGLMath_Mat4_mul *p);
-int32_t da_gl_math_mat4_mul                     (CSOUND *csound,    DaGLMath_Mat4_mul *p);
+typedef DaGLMath_Mat4__Mat4_Mat4                                    DaGLMath_Mat4_multiply;
+int32_t da_gl_math_mat4_multiply_init           (CSOUND *csound,    DaGLMath_Mat4_multiply *p);
+int32_t da_gl_math_mat4_multiply                (CSOUND *csound,    DaGLMath_Mat4_multiply *p);
 
-typedef DaGLMath_Vec3__Mat4_Vec3                                    DaGLMath_Mat4_mulv3;
-int32_t da_gl_math_mat4_mulv3_init              (CSOUND *csound,    DaGLMath_Mat4_mulv3 *p);
-int32_t da_gl_math_mat4_mulv3                   (CSOUND *csound,    DaGLMath_Mat4_mulv3 *p);
+typedef DaGLMath_Vec3__Mat4_Vec3                                    DaGLMath_Mat4_multiplyVec3;
+int32_t da_gl_math_mat4_multiplyVec3_init       (CSOUND *csound,    DaGLMath_Mat4_multiplyVec3 *p);
+int32_t da_gl_math_mat4_multiplyVec3            (CSOUND *csound,    DaGLMath_Mat4_multiplyVec3 *p);
 
-typedef DaGLMath_Quat__Mat4                                         DaGLMath_Mat4_quat;
-int32_t da_gl_math_mat4_quat_init               (CSOUND *csound,    DaGLMath_Mat4_quat *p);
-int32_t da_gl_math_mat4_quat                    (CSOUND *csound,    DaGLMath_Mat4_quat *p);
+typedef DaGLMath_Quat__Mat4                                         DaGLMath_Mat4_quaternion;
+int32_t da_gl_math_mat4_quaternion_init         (CSOUND *csound,    DaGLMath_Mat4_quaternion *p);
+int32_t da_gl_math_mat4_quaternion              (CSOUND *csound,    DaGLMath_Mat4_quaternion *p);
 
 typedef DaGLMath_void__Mat4                                         DaGLMath_Mat4_transposeInPlace;
 int32_t da_gl_math_mat4_transposeInPlace_init   (CSOUND *csound,    DaGLMath_Mat4_transposeInPlace *p);
@@ -43,13 +43,13 @@ typedef DaGLMath_Mat4__Mat4_Val                                     DaGLMath_Mat
 int32_t da_gl_math_mat4_scale_init              (CSOUND *csound,    DaGLMath_Mat4_scale *p);
 int32_t da_gl_math_mat4_scale                   (CSOUND *csound,    DaGLMath_Mat4_scale *p);
 
-typedef DaGLMath_Val__Mat4                                          DaGLMath_Mat4_det;
-int32_t da_gl_math_mat4_det_init                (CSOUND *csound,    DaGLMath_Mat4_det *p);
-int32_t da_gl_math_mat4_det                     (CSOUND *csound,    DaGLMath_Mat4_det *p);
+typedef DaGLMath_Val__Mat4                                          DaGLMath_Mat4_determinant;
+int32_t da_gl_math_mat4_determinant_init        (CSOUND *csound,    DaGLMath_Mat4_determinant *p);
+int32_t da_gl_math_mat4_determinant             (CSOUND *csound,    DaGLMath_Mat4_determinant *p);
 
-typedef DaGLMath_Mat4__Mat4                                         DaGLMath_Mat4_inv;
-int32_t da_gl_math_mat4_inv_init                (CSOUND *csound,    DaGLMath_Mat4_inv *p);
-int32_t da_gl_math_mat4_inv                     (CSOUND *csound,    DaGLMath_Mat4_inv *p);
+typedef DaGLMath_Mat4__Mat4                                         DaGLMath_Mat4_invert;
+int32_t da_gl_math_mat4_invert_init             (CSOUND *csound,    DaGLMath_Mat4_invert *p);
+int32_t da_gl_math_mat4_invert                  (CSOUND *csound,    DaGLMath_Mat4_invert *p);
 
 #ifdef __cplusplus
 }
