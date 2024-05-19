@@ -32,6 +32,13 @@ typedef struct DaGLMath_Mat4__Mat4_Num
     MYFLT *val;
 } DaGLMath_Mat4__Mat4_Num;
 
+typedef struct DaGLMath_Mat4__Vec3
+{
+    OPDS h;
+    ARRAYDAT *out;
+    ARRAYDAT *v;
+} DaGLMath_Mat4__Vec3;
+
 typedef struct DaGLMath_Quat__Mat4
 {
     OPDS h;

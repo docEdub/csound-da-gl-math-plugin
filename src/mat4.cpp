@@ -3,6 +3,9 @@
 #include <glm/ext/matrix_double4x4.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/euler_angles.hpp>
+
 using namespace glm;
 
 const size_t sizeof_mat4 = dmat4::length() * dmat4::col_type::length() * sizeof(dmat4::value_type);
@@ -43,6 +46,14 @@ static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4_Num *p)
     int32_t result = OK;
     result |= check_Mat4(csound, p->out, output);
     result |= check_Mat4(csound, p->m, arg1);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, DaGLMath_Mat4__Vec3 *p)
+{
+    int32_t result = OK;
+    result |= check_Mat4(csound, p->out, output);
+    result |= check_Vec3(csound, p->v, arg1);
     return result;
 }
 
@@ -217,6 +228,20 @@ int32_t da_gl_math_mat4_invert(CSOUND *, DaGLMath_Mat4_invert *p)
 {
     const auto m = make_mat4(p->m->data);
     const auto out = inverse(m);
+
+    memcpy(p->out->data, value_ptr(out), sizeof_mat4);
+    return OK;
+}
+
+int32_t da_gl_math_mat4_fromEulerAnglesXYZ_init(CSOUND *csound, DaGLMath_Mat4_fromEulerAnglesXYZ *p)
+{
+    return check(csound, p);
+}
+
+int32_t da_gl_math_mat4_fromEulerAnglesXYZ(CSOUND *, DaGLMath_Mat4_fromEulerAnglesXYZ *p)
+{
+    const auto v = make_vec3(p->v->data);
+    const auto out = eulerAngleXYZ(v.x, v.y, v.z);
 
     memcpy(p->out->data, value_ptr(out), sizeof_mat4);
     return OK;

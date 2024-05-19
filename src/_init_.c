@@ -113,6 +113,16 @@ static OENTRY localops[] = {
         .kopadr = (SUBR) da_gl_math_mat4_invert,
         .aopadr = NULL
     },
+    {
+        .opname = "DaGLMath_Mat4_fromEulerAnglesXYZ",
+        .dsblksiz = sizeof(DaGLMath_Mat4_fromEulerAnglesXYZ),
+        .thread = 3,
+        .outypes = "k[]",
+        .intypes = "k[]",
+        .iopadr = (SUBR) da_gl_math_mat4_fromEulerAnglesXYZ_init,
+        .kopadr = (SUBR) da_gl_math_mat4_fromEulerAnglesXYZ,
+        .aopadr = NULL
+    },
 };
 
 LINKAGE
