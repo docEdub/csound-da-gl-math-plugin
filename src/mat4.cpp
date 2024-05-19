@@ -90,6 +90,7 @@ static int32_t check(CSOUND *csound, DaGLMath_void__Mat4 *p)
 
 int32_t da_gl_math_mat4_copy_init(CSOUND *csound, DaGLMath_Mat4_copy *p)
 {
+    allocIfNull_Mat4(csound, p->out);
     return check(csound, p);
 }
 
@@ -101,6 +102,7 @@ int32_t da_gl_math_mat4_copy(CSOUND *, DaGLMath_Mat4_copy *p)
 
 int32_t da_gl_math_mat4_identity_init(CSOUND *csound, DaGLMath_Mat4_identity *p)
 {
+    allocIfNull_Mat4(csound, p->out);
     return check(csound, p);
 }
 
@@ -112,6 +114,7 @@ int32_t da_gl_math_mat4_identity(CSOUND *, DaGLMath_Mat4_identity *p)
 
 int32_t da_gl_math_mat4_zero_init(CSOUND *csound, DaGLMath_Mat4_zero *p)
 {
+    allocIfNull_Mat4(csound, p->out);
     return check(csound, p);
 }
 
@@ -123,6 +126,7 @@ int32_t da_gl_math_mat4_zero(CSOUND *, DaGLMath_Mat4_zero *p)
 
 int32_t da_gl_math_mat4_multiply_init(CSOUND *csound, DaGLMath_Mat4_multiply *p)
 {
+    allocIfNull_Mat4(csound, p->out);
     return check(csound, p);
 }
 
@@ -138,6 +142,7 @@ int32_t da_gl_math_mat4_multiply(CSOUND *, DaGLMath_Mat4_multiply *p)
 
 int32_t da_gl_math_mat4_multiplyVec3_init(CSOUND *csound, DaGLMath_Mat4_multiplyVec3 *p)
 {
+    allocIfNull_Vec3(csound, p->out);
     return check(csound, p);
 }
 
@@ -153,6 +158,7 @@ int32_t da_gl_math_mat4_multiplyVec3(CSOUND *, DaGLMath_Mat4_multiplyVec3 *p)
 
 int32_t da_gl_math_mat4_quaternion_init(CSOUND *csound, DaGLMath_Mat4_quaternion *p)
 {
+    allocIfNull_Quat(csound, p->out);
     return check(csound, p);
 }
 
@@ -181,6 +187,7 @@ int32_t da_gl_math_mat4_transposeInPlace(CSOUND *, DaGLMath_Mat4_transposeInPlac
 
 int32_t da_gl_math_mat4_transpose_init(CSOUND *csound, DaGLMath_Mat4_transpose *p)
 {
+    allocIfNull_Mat4(csound, p->out);
     return check(csound, p);
 }
 
@@ -195,6 +202,7 @@ int32_t da_gl_math_mat4_transpose(CSOUND *, DaGLMath_Mat4_transpose *p)
 
 int32_t da_gl_math_mat4_scale_init(CSOUND *csound, DaGLMath_Mat4_scale *p)
 {
+    allocIfNull_Mat4(csound, p->out);
     return check(csound, p);
 }
 
@@ -221,6 +229,7 @@ int32_t da_gl_math_mat4_determinant(CSOUND *, DaGLMath_Mat4_determinant *p)
 
 int32_t da_gl_math_mat4_invert_init(CSOUND *csound, DaGLMath_Mat4_invert *p)
 {
+    allocIfNull_Mat4(csound, p->out);
     return check(csound, p);
 }
 
@@ -235,6 +244,7 @@ int32_t da_gl_math_mat4_invert(CSOUND *, DaGLMath_Mat4_invert *p)
 
 int32_t da_gl_math_mat4_fromEulerAnglesXYZ_init(CSOUND *csound, DaGLMath_Mat4_fromEulerAnglesXYZ *p)
 {
+    allocIfNull_Mat4(csound, p->out);
     return check(csound, p);
 }
 

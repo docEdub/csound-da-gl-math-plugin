@@ -71,6 +71,10 @@ typedef struct DaGLMath_void__Mat4
 extern "C" {
 #endif
 
+void allocIfNull_Mat4(CSOUND *csound, ARRAYDAT *array);
+void allocIfNull_Quat(CSOUND *csound, ARRAYDAT *array);
+void allocIfNull_Vec3(CSOUND *csound, ARRAYDAT *array);
+
 int32_t check_Mat4(CSOUND *csound, ARRAYDAT *array, const char *position);
 int32_t check_Quat(CSOUND *csound, ARRAYDAT *array, const char *position);
 int32_t check_Vec3(CSOUND *csound, ARRAYDAT *array, const char *position);
