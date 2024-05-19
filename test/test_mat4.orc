@@ -7,6 +7,9 @@
 $TEST_FILE(test_mat4)
 
 
+/// #region         copy
+
+
 $TEST(DaGLMath_Mat4_copy)
     k_actual[] init 16
 
@@ -77,6 +80,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_copy_ShouldFailWhenGivenWrongArgument1Arr
 $END_TEST_EXPECTED_INIT_FAIL
 
 
+/// #endregion
+/// #region         identity
+
+
 $TEST(DaGLMath_Mat4_identity)
     k_actual[] init 16
 
@@ -114,6 +121,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_identity_ShouldFailWhenGivenWrongOutputAr
 $END_TEST_EXPECTED_INIT_FAIL
 
 
+/// #endregion
+/// #region         zero
+
+
 $TEST(DaGLMath_Mat4_zero)
     k_actual[] init 16
 
@@ -149,6 +160,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_zero_ShouldFailWhenGivenWrongOutputArrayD
 
     k_actual = DaGLMath_Mat4_zero()
 $END_TEST_EXPECTED_INIT_FAIL
+
+
+/// #endregion
+/// #region         multiply
 
 
 $TEST(DaGLMath_Mat4_multiply)
@@ -259,6 +274,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument
 $END_TEST_EXPECTED_INIT_FAIL
 
 
+/// #endregion
+/// #region         multiplyVec3
+
+
 $TEST(DaGLMath_Mat4_multiplyVec3)
     k_expected[] fillarray 1.46, 1.52, 1.58
     k_actual[] init 3
@@ -365,6 +384,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgu
 $END_TEST_EXPECTED_INIT_FAIL
 
 
+/// #endregion
+/// #region         quaternion
+
+
 $TEST(DaGLMath_Mat4_quaternion)
     k_expected[] fillarray -0.163232, 0.326464, -0.163232, 1.378405
     k_actual[] init 4
@@ -434,6 +457,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_quaternion_ShouldFailWhenGivenWrongArgume
 $END_TEST_EXPECTED_INIT_FAIL
 
 
+/// #endregion
+/// #region         transposeInPlace
+
+
 $TEST(DaGLMath_Mat4_transposeInPlace)
     k_actual_a[] init 16
     k_actual_b[] init 16
@@ -474,6 +501,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transposeInPlace_ShouldFailWhenGivenWrong
 
     DaGLMath_Mat4_transposeInPlace(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
+
+
+/// #endregion
+/// #region         transpose
 
 
 $TEST(DaGLMath_Mat4_transpose)
@@ -547,6 +578,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_transpose_ShouldFailWhenGivenWrongArgumen
 $END_TEST_EXPECTED_INIT_FAIL
 
 
+/// #endregion
+/// #region         scale
+
+
 $TEST(DaGLMath_Mat4_scale)
     k_actual_a[] init 16
     k_actual_b[] init 16
@@ -618,6 +653,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_scale_ShouldFailWhenGivenWrongArgument1Ar
 $END_TEST_EXPECTED_INIT_FAIL
 
 
+/// #endregion
+/// #region         determinant
+
+
 $TEST(DaGLMath_Mat4_determinant)
     k_actual_a init 0
     k_actual_b init 0
@@ -662,6 +701,10 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_determinant_ShouldFailWhenGivenWrongArgum
 
     k_actual = DaGLMath_Mat4_determinant(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
+
+
+/// #endregion
+/// #region         invert
 
 
 $TEST(DaGLMath_Mat4_invert)
@@ -736,6 +779,9 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_invert_ShouldFailWhenGivenWrongArgument1A
 
     k_actual = DaGLMath_Mat4_invert(k_arg1)
 $END_TEST_EXPECTED_INIT_FAIL
+
+
+/// #endregion
 
 
 #include "test-end.orc"
