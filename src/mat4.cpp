@@ -81,6 +81,14 @@ static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4_Vec3 *p)
     return result;
 }
 
+static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Vec3(csound, p->out, output);
+    result |= check_Mat4(csound, p->m, arg1);
+    return result;
+}
+
 static int32_t check(CSOUND *csound, DaGLMath_void__Mat4 *p)
 {
     int32_t result = OK;
@@ -254,5 +262,21 @@ int32_t da_gl_math_mat4_fromEulerAnglesXYZ(CSOUND *, DaGLMath_Mat4_fromEulerAngl
     const auto out = eulerAngleXYZ(v.x, v.y, v.z);
 
     memcpy(p->out->data, value_ptr(out), sizeof_mat4);
+    return OK;
+}
+
+int32_t da_gl_math_mat4_toEulerAnglesXYZ_init(CSOUND *csound, DaGLMath_Mat4_toEulerAnglesXYZ *p)
+{
+    allocIfNull_Vec3(csound, p->out);
+    return check(csound, p);
+}
+
+int32_t da_gl_math_mat4_toEulerAnglesXYZ(CSOUND *csound, DaGLMath_Mat4_toEulerAnglesXYZ *p)
+{
+    const auto m = make_mat4(p->m->data);
+    auto out = dvec3();
+    extractEulerAngleXYZ(m, out.x, out.y, out.z);
+
+    memcpy(p->out->data, value_ptr(out), sizeof_vec3);
     return OK;
 }

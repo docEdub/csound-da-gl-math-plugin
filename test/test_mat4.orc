@@ -941,6 +941,85 @@ $END_TEST_EXPECTED_INIT_FAIL
 
 
 /// #endregion
+/// #region         toEulerAnglesXYZ
+
+
+$TEST(DaGLMath_Mat4_toEulerAnglesXYZ_ShouldInitOutput)
+    k_actual[] = DaGLMath_Mat4_toEulerAnglesXYZ(gk_mat4_eulerAnglesXYZ)
+
+    $ASSERT_EQUAL_kArray(gk_vec3_eulerAnglesXYZ ' k_actual)
+$END_TEST
+
+
+$TEST(DaGLMath_Mat4_toEulerAnglesXYZ_ShouldSetExistingOutput)
+    k_actual[] init 3
+
+    k_actual = DaGLMath_Mat4_toEulerAnglesXYZ(gk_mat4_eulerAnglesXYZ)
+
+    $ASSERT_EQUAL_kArray(gk_vec3_eulerAnglesXYZ ' k_actual)
+$END_TEST
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_toEulerAnglesXYZ_ShouldFailWhenGivenWrongOutputArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArrayDimensionsMessage)
+
+    k_actual[] init 3, 2
+
+    k_actual = DaGLMath_Mat4_toEulerAnglesXYZ(gk_mat4_eulerAnglesXYZ)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_toEulerAnglesXYZ_ShouldFailWhenGivenWrongOutputArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArraySizeMessage)
+
+    k_actual[] init 4
+
+    k_actual = DaGLMath_Mat4_toEulerAnglesXYZ(gk_mat4_eulerAnglesXYZ)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_toEulerAnglesXYZ_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArraySizeMessage)
+
+    k_actual[] init 4, 2
+
+    k_actual = DaGLMath_Mat4_toEulerAnglesXYZ(gk_mat4_eulerAnglesXYZ)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_toEulerAnglesXYZ_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
+
+    k_actual[] init 3
+    k_arg1[] init 16, 2
+
+    k_actual = DaGLMath_Mat4_toEulerAnglesXYZ(k_arg1)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_toEulerAnglesXYZ_ShouldFailWhenGivenWrongArgument1ArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
+
+    k_actual[] init 3
+    k_arg1[] init 17
+
+    k_actual = DaGLMath_Mat4_toEulerAnglesXYZ(k_arg1)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_toEulerAnglesXYZ_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
+
+    k_actual[] init 3
+    k_arg1[] init 17, 2
+
+    k_actual = DaGLMath_Mat4_toEulerAnglesXYZ(k_arg1)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+/// #endregion
 
 
 #include "test-end.orc"

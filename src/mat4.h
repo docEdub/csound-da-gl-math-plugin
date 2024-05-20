@@ -55,6 +55,10 @@ typedef DaGLMath_Mat4__Vec3                                         DaGLMath_Mat
 int32_t da_gl_math_mat4_fromEulerAnglesXYZ_init (CSOUND *csound,    DaGLMath_Mat4_fromEulerAnglesXYZ *p);
 int32_t da_gl_math_mat4_fromEulerAnglesXYZ      (CSOUND *csound,    DaGLMath_Mat4_fromEulerAnglesXYZ *p);
 
+typedef DaGLMath_Vec3__Mat4                                         DaGLMath_Mat4_toEulerAnglesXYZ;
+int32_t da_gl_math_mat4_toEulerAnglesXYZ_init   (CSOUND *csound,    DaGLMath_Mat4_toEulerAnglesXYZ *p);
+int32_t da_gl_math_mat4_toEulerAnglesXYZ        (CSOUND *csound,    DaGLMath_Mat4_toEulerAnglesXYZ *p);
+
 #ifdef __cplusplus
 }
 #endif
