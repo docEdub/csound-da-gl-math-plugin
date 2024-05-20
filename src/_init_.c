@@ -1,8 +1,8 @@
 #include "mat4.h"
-
-#include <csdl.h>
+#include "vec3.h"
 
 static OENTRY localops[] = {
+    #pragma region      Matrix
     {
         .opname = "DaGLMath_Mat4_copy",
         .dsblksiz = sizeof(DaGLMath_Mat4_copy),
@@ -133,6 +133,22 @@ static OENTRY localops[] = {
         .kopadr = (SUBR) da_gl_math_mat4_toEulerAnglesXYZ,
         .aopadr = NULL
     },
+
+    #pragma endregion
+    #pragma region      Vector
+
+    {
+        .opname = "DaGLMath_Vec3_triangleNormal",
+        .dsblksiz = sizeof(DaGLMath_Vec3_triangleNormal),
+        .thread = 3,
+        .outypes = "k[]",
+        .intypes = "k[]k[]k[]",
+        .iopadr = (SUBR) da_gl_math_vec3_triangleNormal_init,
+        .kopadr = (SUBR) da_gl_math_vec3_triangleNormal,
+        .aopadr = NULL
+    },
+
+    #pragma endregion
 };
 
 LINKAGE

@@ -1,5 +1,5 @@
-#ifndef CSOUND_DA_GL_MATH_PLUGIN__COMMON_H
-#define CSOUND_DA_GL_MATH_PLUGIN__COMMON_H
+#ifndef CSOUND_DA_GL_MATH_PLUGIN__COMMON_TYPES_H
+#define CSOUND_DA_GL_MATH_PLUGIN__COMMON_TYPES_H
 
 #include <csdl.h>
 
@@ -74,20 +74,13 @@ typedef struct DaGLMath_Vec3__Mat4_Vec3
     ARRAYDAT *v;
 } DaGLMath_Vec3__Mat4_Vec3;
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void allocIfNull_Mat4(CSOUND *csound, ARRAYDAT *array);
-void allocIfNull_Quat(CSOUND *csound, ARRAYDAT *array);
-void allocIfNull_Vec3(CSOUND *csound, ARRAYDAT *array);
-
-int32_t check_Mat4(CSOUND *csound, ARRAYDAT *array, const char *position);
-int32_t check_Quat(CSOUND *csound, ARRAYDAT *array, const char *position);
-int32_t check_Vec3(CSOUND *csound, ARRAYDAT *array, const char *position);
-
-#ifdef __cplusplus
-}
-#endif
+typedef struct DaGLMath_Vec3__Vec3_Vec3_Vec3
+{
+    OPDS h;
+    ARRAYDAT *out;
+    ARRAYDAT *v1;
+    ARRAYDAT *v2;
+    ARRAYDAT *v3;
+} DaGLMath_Vec3__Vec3_Vec3_Vec3;
 
 #endif

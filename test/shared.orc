@@ -9,9 +9,11 @@ gS_Mat4_WrongArgument2ArraySizeMessage          = "Mat4: argument 2 must have 16
 gS_Vec3_WrongOutputArrayDimensionsMessage       = "Vec3: output must have 1 dimension"
 gS_Vec3_WrongArgument1ArrayDimensionsMessage    = "Vec3: argument 1 must have 1 dimension"
 gS_Vec3_WrongArgument2ArrayDimensionsMessage    = "Vec3: argument 2 must have 1 dimension"
+gS_Vec3_WrongArgument3ArrayDimensionsMessage    = "Vec3: argument 3 must have 1 dimension"
 gS_Vec3_WrongOutputArraySizeMessage             = "Vec3: output must have 3 elements"
 gS_Vec3_WrongArgument1ArraySizeMessage          = "Vec3: argument 1 must have 3 elements"
 gS_Vec3_WrongArgument2ArraySizeMessage          = "Vec3: argument 2 must have 3 elements"
+gS_Vec3_WrongArgument3ArraySizeMessage          = "Vec3: argument 3 must have 3 elements"
 
 gS_Quat_WrongOutputArrayDimensionsMessage       = "Quat: output must have 1 dimension"
 gS_Quat_WrongArgument1ArrayDimensionsMessage    = "Quat: argument 1 must have 1 dimension"
@@ -128,3 +130,8 @@ gk_mat4_eulerAnglesXYZ[] fillarray \
     -0.612372,  0.126826,  0.780330,  0.000000, \
      0.707107, -0.353553,  0.612372,  0.000000, \
      0.000000,  0.000000,  0.000000,  1.000000
+
+gk_vec3_000[] fillarray 0.0, 0.0, 0.0
+gk_vec3_100[] fillarray 1.0, 0.0, 0.0
+gk_vec3_010[] fillarray 0.0, 1.0, 0.0
+gk_vec3_001[] fillarray 0.0, 0.0, 1.0

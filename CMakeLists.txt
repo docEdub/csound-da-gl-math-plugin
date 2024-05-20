@@ -8,7 +8,7 @@ fetch_dependency(
     # URL https://github.com/docEdub/CMakeCsoundPlugin/archive/refs/tags/2024.05.05.tar.gz
     # URL_MD5 8612d88f97ed40b36eada598e6a893dd
     GIT_REPOSITORY git@github.com:docEdub/CMakeCsoundPlugin.git
-    GIT_TAG 6b5b57caf6a1c23d053c32726e3e704e58ca4f05
+    GIT_TAG b3ae302d7cc5ea66296495487e1a3d17ae3c265b
 )
 
 project(csound-da-gl-math-plugin)
@@ -21,10 +21,13 @@ add_csound_plugin(
     TARGET DaGLMath
     SOURCES
         "src/_init_.c"
-        "src/common.c"
-        "src/common.h"
+        "src/common_types.h"
+        "src/common.cpp"
+        "src/common.hpp"
         "src/mat4.cpp"
         "src/mat4.h"
+        "src/vec3.cpp"
+        "src/vec3.h"
     LIBRARIES
         glm::glm-header-only
     TEST_ORCS

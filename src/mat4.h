@@ -1,7 +1,7 @@
 #ifndef CSOUND_DA_GL_MATH_PLUGIN__MAT4_H
 #define CSOUND_DA_GL_MATH_PLUGIN__MAT4_H
 
-#include "common.h"
+#include "common_types.h"
 
 #ifdef __cplusplus
 extern "C" {

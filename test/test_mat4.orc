@@ -1,9 +1,3 @@
-
-#include "test-begin.orc"
-
-#include "shared.orc"
-
-
 $TEST_FILE(test_mat4)
 
 
@@ -1020,6 +1014,3 @@ $END_TEST_EXPECTED_INIT_FAIL
 
 
 /// #endregion
-
-
-#include "test-end.orc"

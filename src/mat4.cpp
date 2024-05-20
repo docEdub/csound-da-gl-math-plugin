@@ -1,98 +1,86 @@
 #include "mat4.h"
 
-#include <glm/ext/matrix_double4x4.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "common.hpp"
 
-#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/euler_angles.hpp>
-
-using namespace glm;
-
-const size_t sizeof_Mat4 = dmat4::length() * dmat4::col_type::length() * sizeof(dmat4::value_type);
-const size_t sizeof_Quat = dquat::length() * sizeof(dquat::value_type);
-const size_t sizeof_Vec3 = dvec3::length() * sizeof(dvec3::value_type);
 
 const dmat4 mat4_identity(1.0);
 const dmat4 mat4_zero(0.0);
 
-static const char *output = "output";
-static const char *arg1 = "argument 1";
-static const char *arg2 = "argument 2";
-
 static int32_t check(CSOUND *csound, DaGLMath_Mat4 *p)
 {
-    return check_Mat4(csound, p->out, output);
+    return check_Mat4(csound, p->out, Constants::output);
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->out, output);
-    result |= check_Mat4(csound, p->m, arg1);
+    result |= check_Mat4(csound, p->out, Constants::output);
+    result |= check_Mat4(csound, p->m, Constants::arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4_Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->out, output);
-    result |= check_Mat4(csound, p->m1, arg1);
-    result |= check_Mat4(csound, p->m2, arg2);
+    result |= check_Mat4(csound, p->out, Constants::output);
+    result |= check_Mat4(csound, p->m1, Constants::arg1);
+    result |= check_Mat4(csound, p->m2, Constants::arg2);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Mat4__Mat4_Num *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->out, output);
-    result |= check_Mat4(csound, p->m, arg1);
+    result |= check_Mat4(csound, p->out, Constants::output);
+    result |= check_Mat4(csound, p->m, Constants::arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Mat4__Vec3 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->out, output);
-    result |= check_Vec3(csound, p->v, arg1);
+    result |= check_Mat4(csound, p->out, Constants::output);
+    result |= check_Vec3(csound, p->v, Constants::arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Nil__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->m, arg1);
+    result |= check_Mat4(csound, p->m, Constants::arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Num__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Mat4(csound, p->m, arg1);
+    result |= check_Mat4(csound, p->m, Constants::arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Quat__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Quat(csound, p->out, output);
-    result |= check_Mat4(csound, p->m, arg1);
+    result |= check_Quat(csound, p->out, Constants::output);
+    result |= check_Mat4(csound, p->m, Constants::arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4 *p)
 {
     int32_t result = OK;
-    result |= check_Vec3(csound, p->out, output);
-    result |= check_Mat4(csound, p->m, arg1);
+    result |= check_Vec3(csound, p->out, Constants::output);
+    result |= check_Mat4(csound, p->m, Constants::arg1);
     return result;
 }
 
 static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4_Vec3 *p)
 {
     int32_t result = OK;
-    result |= check_Vec3(csound, p->out, output);
-    result |= check_Mat4(csound, p->m, arg1);
-    result |= check_Vec3(csound, p->v, arg2);
+    result |= check_Vec3(csound, p->out, Constants::output);
+    result |= check_Mat4(csound, p->m, Constants::arg1);
+    result |= check_Vec3(csound, p->v, Constants::arg2);
     return result;
 }
 
@@ -271,7 +259,7 @@ int32_t da_gl_math_mat4_toEulerAnglesXYZ_init(CSOUND *csound, DaGLMath_Mat4_toEu
     return check(csound, p);
 }
 
-int32_t da_gl_math_mat4_toEulerAnglesXYZ(CSOUND *csound, DaGLMath_Mat4_toEulerAnglesXYZ *p)
+int32_t da_gl_math_mat4_toEulerAnglesXYZ(CSOUND *, DaGLMath_Mat4_toEulerAnglesXYZ *p)
 {
     const auto m = make_mat4(p->m->data);
     auto out = dvec3();

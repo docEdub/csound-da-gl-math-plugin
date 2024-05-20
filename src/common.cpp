@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common.hpp"
 
 static void allocArrayIfNull(CSOUND *csound, ARRAYDAT *array, size_t size)
 {
