@@ -31,7 +31,7 @@ typedef DaGLMath_Quat__Mat4                                         DaGLMath_Mat
 int32_t da_gl_math_mat4_quaternion_init         (CSOUND *csound,    DaGLMath_Mat4_quaternion *p);
 int32_t da_gl_math_mat4_quaternion              (CSOUND *csound,    DaGLMath_Mat4_quaternion *p);
 
-typedef DaGLMath_void__Mat4                                         DaGLMath_Mat4_transposeInPlace;
+typedef DaGLMath_Nil__Mat4                                          DaGLMath_Mat4_transposeInPlace;
 int32_t da_gl_math_mat4_transposeInPlace_init   (CSOUND *csound,    DaGLMath_Mat4_transposeInPlace *p);
 int32_t da_gl_math_mat4_transposeInPlace        (CSOUND *csound,    DaGLMath_Mat4_transposeInPlace *p);
 

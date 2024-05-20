@@ -8,9 +8,9 @@
 
 using namespace glm;
 
-const size_t sizeof_mat4 = dmat4::length() * dmat4::col_type::length() * sizeof(dmat4::value_type);
-const size_t sizeof_quat = dquat::length() * sizeof(dquat::value_type);
-const size_t sizeof_vec3 = dvec3::length() * sizeof(dvec3::value_type);
+const size_t sizeof_Mat4 = dmat4::length() * dmat4::col_type::length() * sizeof(dmat4::value_type);
+const size_t sizeof_Quat = dquat::length() * sizeof(dquat::value_type);
+const size_t sizeof_Vec3 = dvec3::length() * sizeof(dvec3::value_type);
 
 const dmat4 mat4_identity(1.0);
 const dmat4 mat4_zero(0.0);
@@ -57,6 +57,20 @@ static int32_t check(CSOUND *csound, DaGLMath_Mat4__Vec3 *p)
     return result;
 }
 
+static int32_t check(CSOUND *csound, DaGLMath_Nil__Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Mat4(csound, p->m, arg1);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, DaGLMath_Num__Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Mat4(csound, p->m, arg1);
+    return result;
+}
+
 static int32_t check(CSOUND *csound, DaGLMath_Quat__Mat4 *p)
 {
     int32_t result = OK;
@@ -65,9 +79,10 @@ static int32_t check(CSOUND *csound, DaGLMath_Quat__Mat4 *p)
     return result;
 }
 
-static int32_t check(CSOUND *csound, DaGLMath_Num__Mat4 *p)
+static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4 *p)
 {
     int32_t result = OK;
+    result |= check_Vec3(csound, p->out, output);
     result |= check_Mat4(csound, p->m, arg1);
     return result;
 }
@@ -81,21 +96,6 @@ static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4_Vec3 *p)
     return result;
 }
 
-static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4 *p)
-{
-    int32_t result = OK;
-    result |= check_Vec3(csound, p->out, output);
-    result |= check_Mat4(csound, p->m, arg1);
-    return result;
-}
-
-static int32_t check(CSOUND *csound, DaGLMath_void__Mat4 *p)
-{
-    int32_t result = OK;
-    result |= check_Mat4(csound, p->m, arg1);
-    return result;
-}
-
 int32_t da_gl_math_mat4_copy_init(CSOUND *csound, DaGLMath_Mat4_copy *p)
 {
     allocIfNull_Mat4(csound, p->out);
@@ -104,7 +104,7 @@ int32_t da_gl_math_mat4_copy_init(CSOUND *csound, DaGLMath_Mat4_copy *p)
 
 int32_t da_gl_math_mat4_copy(CSOUND *, DaGLMath_Mat4_copy *p)
 {
-    memcpy(p->out->data, p->m->data, sizeof_mat4);
+    memcpy(p->out->data, p->m->data, sizeof_Mat4);
     return OK;
 }
 
@@ -116,7 +116,7 @@ int32_t da_gl_math_mat4_identity_init(CSOUND *csound, DaGLMath_Mat4_identity *p)
 
 int32_t da_gl_math_mat4_identity(CSOUND *, DaGLMath_Mat4_identity *p)
 {
-    memcpy(p->out->data, value_ptr(mat4_identity), sizeof_mat4);
+    memcpy(p->out->data, value_ptr(mat4_identity), sizeof_Mat4);
     return OK;
 }
 
@@ -128,7 +128,7 @@ int32_t da_gl_math_mat4_zero_init(CSOUND *csound, DaGLMath_Mat4_zero *p)
 
 int32_t da_gl_math_mat4_zero(CSOUND *, DaGLMath_Mat4_zero *p)
 {
-    memcpy(p->out->data, value_ptr(mat4_zero), sizeof_mat4);
+    memcpy(p->out->data, value_ptr(mat4_zero), sizeof_Mat4);
     return OK;
 }
 
@@ -144,7 +144,7 @@ int32_t da_gl_math_mat4_multiply(CSOUND *, DaGLMath_Mat4_multiply *p)
     const auto m2 = make_mat4(p->m2->data);
     const auto out = m1 * m2;
 
-    memcpy(p->out->data, value_ptr(out), sizeof_mat4);
+    memcpy(p->out->data, value_ptr(out), sizeof_Mat4);
     return OK;
 }
 
@@ -160,7 +160,7 @@ int32_t da_gl_math_mat4_multiplyVec3(CSOUND *, DaGLMath_Mat4_multiplyVec3 *p)
     const auto v = dvec4(make_vec3(p->v->data), 1.0);
     const auto out = m * v;
 
-    memcpy(p->out->data, value_ptr(out), sizeof_vec3);
+    memcpy(p->out->data, value_ptr(out), sizeof_Vec3);
     return OK;
 }
 
@@ -175,7 +175,7 @@ int32_t da_gl_math_mat4_quaternion(CSOUND *, DaGLMath_Mat4_quaternion *p)
     const auto m = make_mat4(p->m->data);
     const auto out = quat_cast(m);
 
-    memcpy(p->out->data, value_ptr(out), sizeof_quat);
+    memcpy(p->out->data, value_ptr(out), sizeof_Quat);
     return OK;
 }
 
@@ -189,7 +189,7 @@ int32_t da_gl_math_mat4_transposeInPlace(CSOUND *, DaGLMath_Mat4_transposeInPlac
     auto m = make_mat4(p->m->data);
     m = transpose(m);
 
-    memcpy(p->m->data, value_ptr(m), sizeof_mat4);
+    memcpy(p->m->data, value_ptr(m), sizeof_Mat4);
     return OK;
 }
 
@@ -204,7 +204,7 @@ int32_t da_gl_math_mat4_transpose(CSOUND *, DaGLMath_Mat4_transpose *p)
     const auto m = make_mat4(p->m->data);
     const auto out = transpose(m);
 
-    memcpy(p->out->data, value_ptr(out), sizeof_mat4);
+    memcpy(p->out->data, value_ptr(out), sizeof_Mat4);
     return OK;
 }
 
@@ -219,7 +219,7 @@ int32_t da_gl_math_mat4_scale(CSOUND *, DaGLMath_Mat4_scale *p)
     const auto m = make_mat4(p->m->data);
     const auto out = m * *p->val;
 
-    memcpy(p->out->data, value_ptr(out), sizeof_mat4);
+    memcpy(p->out->data, value_ptr(out), sizeof_Mat4);
     return OK;
 }
 
@@ -246,7 +246,7 @@ int32_t da_gl_math_mat4_invert(CSOUND *, DaGLMath_Mat4_invert *p)
     const auto m = make_mat4(p->m->data);
     const auto out = inverse(m);
 
-    memcpy(p->out->data, value_ptr(out), sizeof_mat4);
+    memcpy(p->out->data, value_ptr(out), sizeof_Mat4);
     return OK;
 }
 
@@ -261,7 +261,7 @@ int32_t da_gl_math_mat4_fromEulerAnglesXYZ(CSOUND *, DaGLMath_Mat4_fromEulerAngl
     const auto v = make_vec3(p->v->data);
     const auto out = eulerAngleXYZ(v.x, v.y, v.z);
 
-    memcpy(p->out->data, value_ptr(out), sizeof_mat4);
+    memcpy(p->out->data, value_ptr(out), sizeof_Mat4);
     return OK;
 }
 
@@ -277,6 +277,6 @@ int32_t da_gl_math_mat4_toEulerAnglesXYZ(CSOUND *csound, DaGLMath_Mat4_toEulerAn
     auto out = dvec3();
     extractEulerAngleXYZ(m, out.x, out.y, out.z);
 
-    memcpy(p->out->data, value_ptr(out), sizeof_vec3);
+    memcpy(p->out->data, value_ptr(out), sizeof_Vec3);
     return OK;
 }

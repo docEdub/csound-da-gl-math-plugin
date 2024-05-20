@@ -39,12 +39,11 @@ typedef struct DaGLMath_Mat4__Vec3
     ARRAYDAT *v;
 } DaGLMath_Mat4__Vec3;
 
-typedef struct DaGLMath_Quat__Mat4
+typedef struct DaGLMath_Nil__Mat4
 {
     OPDS h;
-    ARRAYDAT *out;
     ARRAYDAT *m;
-} DaGLMath_Quat__Mat4;
+} DaGLMath_Nil__Mat4;
 
 typedef struct DaGLMath_Num__Mat4
 {
@@ -53,13 +52,12 @@ typedef struct DaGLMath_Num__Mat4
     ARRAYDAT *m;
 } DaGLMath_Num__Mat4;
 
-typedef struct DaGLMath_Vec3__Mat4_Vec3
+typedef struct DaGLMath_Quat__Mat4
 {
     OPDS h;
     ARRAYDAT *out;
     ARRAYDAT *m;
-    ARRAYDAT *v;
-} DaGLMath_Vec3__Mat4_Vec3;
+} DaGLMath_Quat__Mat4;
 
 typedef struct DaGLMath_Vec3__Mat4
 {
@@ -68,11 +66,13 @@ typedef struct DaGLMath_Vec3__Mat4
     ARRAYDAT *m;
 } DaGLMath_Vec3__Mat4;
 
-typedef struct DaGLMath_void__Mat4
+typedef struct DaGLMath_Vec3__Mat4_Vec3
 {
     OPDS h;
+    ARRAYDAT *out;
     ARRAYDAT *m;
-} DaGLMath_void__Mat4;
+    ARRAYDAT *v;
+} DaGLMath_Vec3__Mat4_Vec3;
 
 #ifdef __cplusplus
 extern "C" {
