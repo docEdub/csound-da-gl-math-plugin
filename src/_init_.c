@@ -6,7 +6,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_copy",
         .dsblksiz = sizeof(DaGLMath_Mat4_copy),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
         .iopadr = (SUBR) da_gl_math_mat4_copy_init,
@@ -16,7 +15,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_identity",
         .dsblksiz = sizeof(DaGLMath_Mat4_identity),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "",
         .iopadr = (SUBR) da_gl_math_mat4_identity_init,
@@ -26,7 +24,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_zero",
         .dsblksiz = sizeof(DaGLMath_Mat4_zero),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "",
         .iopadr = (SUBR) da_gl_math_mat4_zero_init,
@@ -36,7 +33,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_multiply",
         .dsblksiz = sizeof(DaGLMath_Mat4_multiply),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k[]",
         .iopadr = (SUBR) da_gl_math_mat4_multiply_init,
@@ -46,7 +42,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_multiplyVec3",
         .dsblksiz = sizeof(DaGLMath_Mat4_multiplyVec3),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k[]",
         .iopadr = (SUBR) da_gl_math_mat4_multiplyVec3_init,
@@ -56,7 +51,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_quaternion",
         .dsblksiz = sizeof(DaGLMath_Mat4_quaternion),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
         .iopadr = (SUBR) da_gl_math_mat4_quaternion_init,
@@ -66,7 +60,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_transposeInPlace",
         .dsblksiz = sizeof(DaGLMath_Mat4_transposeInPlace),
-        .thread = 3,
         .outypes = "",
         .intypes = "k[]",
         .iopadr = (SUBR) da_gl_math_mat4_transposeInPlace_init,
@@ -76,7 +69,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_transpose",
         .dsblksiz = sizeof(DaGLMath_Mat4_transpose),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
         .iopadr = (SUBR) da_gl_math_mat4_transpose_init,
@@ -86,7 +78,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_scale",
         .dsblksiz = sizeof(DaGLMath_Mat4_scale),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k",
         .iopadr = (SUBR) da_gl_math_mat4_scale_init,
@@ -96,7 +87,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_determinant",
         .dsblksiz = sizeof(DaGLMath_Mat4_determinant),
-        .thread = 3,
         .outypes = "k",
         .intypes = "k[]",
         .iopadr = (SUBR) da_gl_math_mat4_determinant_init,
@@ -106,7 +96,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_invert",
         .dsblksiz = sizeof(DaGLMath_Mat4_invert),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
         .iopadr = (SUBR) da_gl_math_mat4_invert_init,
@@ -116,7 +105,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_fromEulerAnglesXYZ",
         .dsblksiz = sizeof(DaGLMath_Mat4_fromEulerAnglesXYZ),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
         .iopadr = (SUBR) da_gl_math_mat4_fromEulerAnglesXYZ_init,
@@ -126,7 +114,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Mat4_toEulerAnglesXYZ",
         .dsblksiz = sizeof(DaGLMath_Mat4_fromEulerAnglesXYZ),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]",
         .iopadr = (SUBR) da_gl_math_mat4_toEulerAnglesXYZ_init,
@@ -140,7 +127,6 @@ static OENTRY localops[] = {
     {
         .opname = "DaGLMath_Vec3_triangleNormal",
         .dsblksiz = sizeof(DaGLMath_Vec3_triangleNormal),
-        .thread = 3,
         .outypes = "k[]",
         .intypes = "k[]k[]k[]",
         .iopadr = (SUBR) da_gl_math_vec3_triangleNormal_init,
