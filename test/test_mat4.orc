@@ -308,7 +308,7 @@ $END_TEST_EXPECTED_INIT_FAIL
 $TEST(DaGLMath_Mat4_multiplyVec3_ShouldInitOutput)
     k_expected[] fillarray 1.46, 1.52, 1.58
 
-    k_actual[] = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
+    k_actual[] = DaGLMath_Mat4_multiplyVec3(gk_vec3_a, gk_mat4_a)
 
     $ASSERT_EQUAL_kArray(k_expected ' k_actual)
 $END_TEST
@@ -318,7 +318,7 @@ $TEST(DaGLMath_Mat4_multiplyVec3_ShouldSetExistingOutput)
     k_expected[] fillarray 1.46, 1.52, 1.58
     k_actual[] init 3
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
+    k_actual = DaGLMath_Mat4_multiplyVec3(gk_vec3_a, gk_mat4_a)
 
     $ASSERT_EQUAL_kArray(k_expected ' k_actual)
 $END_TEST
@@ -329,7 +329,7 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongOutp
 
     k_actual[] init 3, 2
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
+    k_actual = DaGLMath_Mat4_multiplyVec3(gk_vec3_a, gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
@@ -338,7 +338,7 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongOutp
 
     k_actual[] init 4
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
+    k_actual = DaGLMath_Mat4_multiplyVec3(gk_vec3_a, gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
@@ -348,75 +348,69 @@ $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongOutp
 
     k_actual[] init 4, 2
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(gk_mat4_a, gk_vec3_a)
+    k_actual = DaGLMath_Mat4_multiplyVec3(gk_vec3_a, gk_mat4_a)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArrayDimensionsMessage)
 
-    k_actual[] init 16
-    k_arg1[] init 16, 2
-    k_arg2[] init 3
+    k_arg1[] init 3, 2
+    k_arg2[] init 16
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
+    k_actual[] = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument1ArraySize)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArraySizeMessage)
 
-    k_actual[] init 16
-    k_arg1[] init 17
-    k_arg2[] init 3
+    k_arg1[] init 4
+    k_arg2[] init 16
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
+    k_actual[] = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArrayDimensionsMessage)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument1ArraySizeMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArraySizeMessage)
 
-    k_actual[] init 16
-    k_arg1[] init 17, 2
-    k_arg2[] init 3
+    k_arg1[] init 4, 2
+    k_arg2[] init 16
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
+    k_actual[] = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiply_ShouldFailWhenGivenWrongArgument2ArrayDimensions)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument2ArrayDimensionsMessage)
 
-    k_actual[] init 16
-    k_arg1[] init 16
-    k_arg2[] init 3, 2
+    k_arg1[] init 3
+    k_arg2[] init 16, 2
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
+    k_actual[] = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument2ArraySize)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArraySizeMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument2ArraySizeMessage)
 
-    k_actual[] init 16
-    k_arg1[] init 16
-    k_arg2[] init 4
+    k_arg1[] init 3
+    k_arg2[] init 17
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
+    k_actual[] = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 
 $TEST_EXPECTED_INIT_FAIL(DaGLMath_Mat4_multiplyVec3_ShouldFailWhenGivenWrongArgument2ArrayDimensionsAndSize)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArrayDimensionsMessage)
-    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArraySizeMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument2ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Mat4_WrongArgument2ArraySizeMessage)
 
-    k_actual[] init 16
-    k_arg1[] init 16
-    k_arg2[] init 4, 2
+    k_arg1[] init 3
+    k_arg2[] init 17, 2
 
-    k_actual = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
+    k_actual[] = DaGLMath_Mat4_multiplyVec3(k_arg1, k_arg2)
 $END_TEST_EXPECTED_INIT_FAIL
 
 

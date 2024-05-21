@@ -74,6 +74,14 @@ typedef struct DaGLMath_Vec3__Mat4_Vec3
     ARRAYDAT *v;
 } DaGLMath_Vec3__Mat4_Vec3;
 
+typedef struct DaGLMath_Vec3__Vec3_Mat4
+{
+    OPDS h;
+    ARRAYDAT *out;
+    ARRAYDAT *v;
+    ARRAYDAT *m;
+} DaGLMath_Vec3__Vec3_Mat4;
+
 typedef struct DaGLMath_Vec3__Vec3_Vec3_Vec3
 {
     OPDS h;

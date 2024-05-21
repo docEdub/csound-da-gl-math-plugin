@@ -84,6 +84,15 @@ static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4_Vec3 *p)
     return result;
 }
 
+static int32_t check(CSOUND *csound, DaGLMath_Vec3__Vec3_Mat4 *p)
+{
+    int32_t result = OK;
+    result |= check_Vec3(csound, p->out, Constants::output);
+    result |= check_Vec3(csound, p->v, Constants::arg1);
+    result |= check_Mat4(csound, p->m, Constants::arg2);
+    return result;
+}
+
 int32_t da_gl_math_mat4_copy_init(CSOUND *csound, DaGLMath_Mat4_copy *p)
 {
     allocIfNull_Mat4(csound, p->out);
@@ -144,8 +153,8 @@ int32_t da_gl_math_mat4_multiplyVec3_init(CSOUND *csound, DaGLMath_Mat4_multiply
 
 int32_t da_gl_math_mat4_multiplyVec3(CSOUND *, DaGLMath_Mat4_multiplyVec3 *p)
 {
-    const auto m = make_mat4(p->m->data);
     const auto v = dvec4(make_vec3(p->v->data), 1.0);
+    const auto m = make_mat4(p->m->data);
     const auto out = m * v;
 
     memcpy(p->out->data, value_ptr(out), sizeof_Vec3);

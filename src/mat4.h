@@ -23,7 +23,7 @@ typedef DaGLMath_Mat4__Mat4_Mat4                                    DaGLMath_Mat
 int32_t da_gl_math_mat4_multiply_init           (CSOUND *csound,    DaGLMath_Mat4_multiply *p);
 int32_t da_gl_math_mat4_multiply                (CSOUND *csound,    DaGLMath_Mat4_multiply *p);
 
-typedef DaGLMath_Vec3__Mat4_Vec3                                    DaGLMath_Mat4_multiplyVec3;
+typedef DaGLMath_Vec3__Vec3_Mat4                                    DaGLMath_Mat4_multiplyVec3;
 int32_t da_gl_math_mat4_multiplyVec3_init       (CSOUND *csound,    DaGLMath_Mat4_multiplyVec3 *p);
 int32_t da_gl_math_mat4_multiplyVec3            (CSOUND *csound,    DaGLMath_Mat4_multiplyVec3 *p);
 
