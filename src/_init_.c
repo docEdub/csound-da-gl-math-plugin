@@ -138,6 +138,46 @@ static OENTRY localops[] = {
     #pragma region      Vector
 
     {
+        .opname = "DaGLMath_Vec3_distance",
+        .dsblksiz = sizeof(DaGLMath_Vec3_distance),
+        .thread = 3,
+        .outypes = "k",
+        .intypes = "k[]k[]",
+        .iopadr = (SUBR) da_gl_math_vec3_distance_init,
+        .kopadr = (SUBR) da_gl_math_vec3_distance,
+        .aopadr = NULL
+    },
+    {
+        .opname = "DaGLMath_Vec3_distanceSquared",
+        .dsblksiz = sizeof(DaGLMath_Vec3_distanceSquared),
+        .thread = 3,
+        .outypes = "k",
+        .intypes = "k[]k[]",
+        .iopadr = (SUBR) da_gl_math_vec3_distanceSquared_init,
+        .kopadr = (SUBR) da_gl_math_vec3_distanceSquared,
+        .aopadr = NULL
+    },
+    {
+        .opname = "DaGLMath_Vec3_length",
+        .dsblksiz = sizeof(DaGLMath_Vec3_length),
+        .thread = 3,
+        .outypes = "k",
+        .intypes = "k[]",
+        .iopadr = (SUBR) da_gl_math_vec3_length_init,
+        .kopadr = (SUBR) da_gl_math_vec3_length,
+        .aopadr = NULL
+    },
+    {
+        .opname = "DaGLMath_Vec3_lengthSquared",
+        .dsblksiz = sizeof(DaGLMath_Vec3_lengthSquared),
+        .thread = 3,
+        .outypes = "k",
+        .intypes = "k[]",
+        .iopadr = (SUBR) da_gl_math_vec3_lengthSquared_init,
+        .kopadr = (SUBR) da_gl_math_vec3_lengthSquared,
+        .aopadr = NULL
+    },
+    {
         .opname = "DaGLMath_Vec3_triangleNormal",
         .dsblksiz = sizeof(DaGLMath_Vec3_triangleNormal),
         .thread = 3,

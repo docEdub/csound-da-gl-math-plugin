@@ -6,6 +6,21 @@
 
 using namespace glm;
 
+static int32_t check(CSOUND *csound, DaGLMath_Num__Vec3 *p)
+{
+    int32_t result = OK;
+    result |= check_Vec3(csound, p->v, Constants::arg1);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, DaGLMath_Num__Vec3_Vec3 *p)
+{
+    int32_t result = OK;
+    result |= check_Vec3(csound, p->v1, Constants::arg1);
+    result |= check_Vec3(csound, p->v2, Constants::arg2);
+    return result;
+}
+
 static int32_t check(CSOUND *csound, DaGLMath_Vec3__Vec3_Vec3_Vec3 *p)
 {
     int32_t result = OK;
@@ -15,6 +30,58 @@ static int32_t check(CSOUND *csound, DaGLMath_Vec3__Vec3_Vec3_Vec3 *p)
     result |= check_Vec3(csound, p->v3, Constants::arg3);
     return result;
 }
+
+int32_t da_gl_math_vec3_distance_init(CSOUND *csound, DaGLMath_Vec3_distance *p)
+{
+    return check(csound, p);
+}
+
+int32_t da_gl_math_vec3_distance(CSOUND *, DaGLMath_Vec3_distance *p)
+{
+    const auto v1 = make_vec3(p->v1->data);
+    const auto v2 = make_vec3(p->v2->data);
+    *p->out = glm::distance(v1, v2);
+    return OK;
+}
+
+int32_t da_gl_math_vec3_distanceSquared_init(CSOUND *csound, DaGLMath_Vec3_distanceSquared *p)
+{
+    return check(csound, p);
+}
+
+int32_t da_gl_math_vec3_distanceSquared(CSOUND *, DaGLMath_Vec3_distanceSquared *p)
+{
+    const auto v1 = make_vec3(p->v1->data);
+    const auto v2 = make_vec3(p->v2->data);
+    const auto tmp = v1 - v2;
+    *p->out = glm::dot(tmp, tmp);
+    return OK;
+}
+
+int32_t da_gl_math_vec3_length_init(CSOUND *csound, DaGLMath_Vec3_length *p)
+{
+    return check(csound, p);
+}
+
+int32_t da_gl_math_vec3_length(CSOUND *, DaGLMath_Vec3_length *p)
+{
+    const auto v = make_vec3(p->v->data);
+    *p->out = glm::length(v);
+    return OK;
+}
+
+int32_t da_gl_math_vec3_lengthSquared_init(CSOUND *csound, DaGLMath_Vec3_lengthSquared *p)
+{
+    return check(csound, p);
+}
+
+int32_t da_gl_math_vec3_lengthSquared(CSOUND *, DaGLMath_Vec3_lengthSquared *p)
+{
+    const auto v = make_vec3(p->v->data);
+    *p->out = glm::dot(v, v);
+    return OK;
+}
+
 
 int32_t da_gl_math_vec3_triangleNormal_init(CSOUND *csound, DaGLMath_Vec3_triangleNormal *p)
 {
