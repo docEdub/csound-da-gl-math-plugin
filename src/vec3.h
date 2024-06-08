@@ -15,6 +15,10 @@ typedef DaGLMath_Num__Vec3_Vec3                                     DaGLMath_Vec
 int32_t da_gl_math_vec3_distanceSquared_init    (CSOUND *csound,    DaGLMath_Vec3_distanceSquared *p);
 int32_t da_gl_math_vec3_distanceSquared         (CSOUND *csound,    DaGLMath_Vec3_distanceSquared *p);
 
+typedef DaGLMath_Num__Vec3_Vec3                                     DaGLMath_Vec3_dot;
+int32_t da_gl_math_vec3_dot_init                (CSOUND *csound,    DaGLMath_Vec3_dot *p);
+int32_t da_gl_math_vec3_dot                     (CSOUND *csound,    DaGLMath_Vec3_dot *p);
+
 typedef DaGLMath_Num__Vec3                                          DaGLMath_Vec3_lengthSquared;
 int32_t da_gl_math_vec3_lengthSquared_init      (CSOUND *csound,    DaGLMath_Vec3_lengthSquared *p);
 int32_t da_gl_math_vec3_lengthSquared           (CSOUND *csound,    DaGLMath_Vec3_lengthSquared *p);

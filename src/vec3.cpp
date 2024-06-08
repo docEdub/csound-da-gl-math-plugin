@@ -58,6 +58,19 @@ int32_t da_gl_math_vec3_distanceSquared(CSOUND *, DaGLMath_Vec3_distanceSquared 
     return OK;
 }
 
+int32_t da_gl_math_vec3_dot_init(CSOUND *csound, DaGLMath_Vec3_dot *p)
+{
+    return check(csound, p);
+}
+
+int32_t da_gl_math_vec3_dot(CSOUND *, DaGLMath_Vec3_dot *p)
+{
+    const auto v1 = make_vec3(p->v1->data);
+    const auto v2 = make_vec3(p->v2->data);
+    *p->out = glm::dot(v1, v2);
+    return OK;
+}
+
 int32_t da_gl_math_vec3_length_init(CSOUND *csound, DaGLMath_Vec3_length *p)
 {
     return check(csound, p);

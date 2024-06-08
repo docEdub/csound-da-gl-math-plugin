@@ -165,6 +165,101 @@ $END_TEST_EXPECTED_INIT_FAIL
 
 
 /// #endregion
+/// #region         dot
+
+
+$TEST(DaGLMath_Vec3_dot_ShouldReturnCorrectValue)
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_100, gk_vec3_100)
+    $ASSERT_EQUAL_k(1.0 ' k_actual)
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_100, gk_vec3_010)
+    $ASSERT_EQUAL_k(0.0 ' k_actual)
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_100, gk_vec3_001)
+    $ASSERT_EQUAL_k(0.0 ' k_actual)
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_010, gk_vec3_100)
+    $ASSERT_EQUAL_k(0.0 ' k_actual)
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_010, gk_vec3_010)
+    $ASSERT_EQUAL_k(1.0 ' k_actual)
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_010, gk_vec3_001)
+    $ASSERT_EQUAL_k(0.0 ' k_actual)
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_001, gk_vec3_100)
+    $ASSERT_EQUAL_k(0.0 ' k_actual)
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_001, gk_vec3_010)
+    $ASSERT_EQUAL_k(0.0 ' k_actual)
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_001, gk_vec3_001)
+    $ASSERT_EQUAL_k(1.0 ' k_actual)
+
+    k_vec3_a1[] = fillarray(1.0, 2.0, 3.0)
+    k_vec3_b1[] = fillarray(4.0, 5.0, 6.0)
+    k_actual = DaGLMath_Vec3_dot(k_vec3_a1, k_vec3_b1)
+    $ASSERT_EQUAL_k(32.0 ' k_actual)
+$END_TEST
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_dot_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArrayDimensionsMessage)
+
+    k_arg[] init 3, 2
+
+    k_actual = DaGLMath_Vec3_dot(k_arg, gk_vec3_100)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_dot_ShouldFailWhenGivenWrongArgument1ArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArraySizeMessage)
+
+    k_arg[] init 4
+
+    k_actual = DaGLMath_Vec3_dot(k_arg, gk_vec3_010)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_dot_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArraySizeMessage)
+
+    k_arg[] init 4, 2
+
+    k_actual = DaGLMath_Vec3_dot(k_arg, gk_vec3_010)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_dot_ShouldFailWhenGivenWrongArgument2ArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArrayDimensionsMessage)
+
+    k_arg[] init 3, 2
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_100, k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_dot_ShouldFailWhenGivenWrongArgument2ArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArraySizeMessage)
+
+    k_arg[] init 4
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_100, k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_dot_ShouldFailWhenGivenWrongArgument2ArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument2ArraySizeMessage)
+
+    k_arg[] init 4, 2
+
+    k_actual = DaGLMath_Vec3_dot(gk_vec3_100, k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+/// #endregion
 /// #region         length
 
 

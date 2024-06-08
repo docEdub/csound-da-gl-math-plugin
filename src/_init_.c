@@ -158,6 +158,16 @@ static OENTRY localops[] = {
         .aopadr = NULL
     },
     {
+        .opname = "DaGLMath_Vec3_dot",
+        .dsblksiz = sizeof(DaGLMath_Vec3_dot),
+        .thread = 3,
+        .outypes = "k",
+        .intypes = "k[]k[]",
+        .iopadr = (SUBR) da_gl_math_vec3_dot_init,
+        .kopadr = (SUBR) da_gl_math_vec3_dot,
+        .aopadr = NULL
+    },
+    {
         .opname = "DaGLMath_Vec3_length",
         .dsblksiz = sizeof(DaGLMath_Vec3_length),
         .thread = 3,
