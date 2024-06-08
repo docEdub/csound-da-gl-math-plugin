@@ -6,6 +6,13 @@
 
 using namespace glm;
 
+static int32_t check(CSOUND *csound, DaGLMath_Nil__Vec3 *p)
+{
+    int32_t result = OK;
+    result |= check_Vec3(csound, p->v, Constants::arg1);
+    return result;
+}
+
 static int32_t check(CSOUND *csound, DaGLMath_Num__Vec3 *p)
 {
     int32_t result = OK;
@@ -18,6 +25,14 @@ static int32_t check(CSOUND *csound, DaGLMath_Num__Vec3_Vec3 *p)
     int32_t result = OK;
     result |= check_Vec3(csound, p->v1, Constants::arg1);
     result |= check_Vec3(csound, p->v2, Constants::arg2);
+    return result;
+}
+
+static int32_t check(CSOUND *csound, DaGLMath_Vec3__Vec3 *p)
+{
+    int32_t result = OK;
+    result |= check_Vec3(csound, p->out, Constants::output);
+    result |= check_Vec3(csound, p->v, Constants::arg1);
     return result;
 }
 
@@ -95,6 +110,34 @@ int32_t da_gl_math_vec3_lengthSquared(CSOUND *, DaGLMath_Vec3_lengthSquared *p)
     return OK;
 }
 
+int32_t da_gl_math_vec3_normalize_init(CSOUND *csound, DaGLMath_Vec3_normalize *p)
+{
+    allocIfNull_Vec3(csound, p->out);
+    return check(csound, p);
+}
+
+int32_t da_gl_math_vec3_normalize(CSOUND *, DaGLMath_Vec3_normalize *p)
+{
+    const auto v = make_vec3(p->v->data);
+    const auto out = glm::normalize(v);
+
+    memcpy(p->out->data, value_ptr(out), sizeof_Vec3);
+    return OK;
+}
+
+int32_t da_gl_math_vec3_normalizeInPlace_init(CSOUND *csound, DaGLMath_Vec3_normalizeInPlace *p)
+{
+    return check(csound, p);
+}
+
+int32_t da_gl_math_vec3_normalizeInPlace(CSOUND *, DaGLMath_Vec3_normalizeInPlace *p)
+{
+    auto v = make_vec3(p->v->data);
+    v = glm::normalize(v);
+
+    memcpy(p->v->data, value_ptr(v), sizeof_Vec3);
+    return OK;
+}
 
 int32_t da_gl_math_vec3_triangleNormal_init(CSOUND *csound, DaGLMath_Vec3_triangleNormal *p)
 {

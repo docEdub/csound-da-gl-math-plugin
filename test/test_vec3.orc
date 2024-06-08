@@ -364,6 +364,147 @@ $END_TEST_EXPECTED_INIT_FAIL
 
 
 /// #endregion
+/// #region         normalize
+
+
+$TEST(DaGLMath_Vec3_normalize_ShouldReturnCorrectValue)
+    k_actual[] = DaGLMath_Vec3_normalize(gk_vec3_100)
+    $ASSERT_EQUAL_kArray(gk_vec3_100 ' k_actual)
+
+    k_actual[] = DaGLMath_Vec3_normalize(gk_vec3_010)
+    $ASSERT_EQUAL_kArray(gk_vec3_010 ' k_actual)
+
+    k_actual[] = DaGLMath_Vec3_normalize(gk_vec3_001)
+    $ASSERT_EQUAL_kArray(gk_vec3_001 ' k_actual)
+
+    k_vec3[] = fillarray(1.0, 2.0, 3.0)
+    k_actual[] = DaGLMath_Vec3_normalize(k_vec3)
+    k_expected[] = fillarray(0.267261, 0.534522, 0.801784)
+    $ASSERT_EQUAL_kArray(k_expected ' k_actual)
+
+    k_vec3[] = fillarray(-1.0, -2.0, -3.0)
+    k_actual[] = DaGLMath_Vec3_normalize(k_vec3)
+    k_expected[] = fillarray(-0.267261, -0.534522, -0.801784)
+    $ASSERT_EQUAL_kArray(k_expected ' k_actual)
+$END_TEST
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalize_ShouldFailWhenGivenWrongOutputArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArrayDimensionsMessage)
+
+    k_actual[] init 3, 2
+
+    k_actual = DaGLMath_Vec3_normalize(gk_vec3_100)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalize_ShouldFailWhenGivenWrongOutputArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArraySizeMessage)
+
+    k_actual[] init 4
+
+    k_actual = DaGLMath_Vec3_normalize(gk_vec3_100)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalize_ShouldFailWhenGivenWrongOutputArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongOutputArraySizeMessage)
+
+    k_actual[] init 4, 2
+
+    k_actual = DaGLMath_Vec3_normalize(gk_vec3_100)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalize_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArrayDimensionsMessage)
+
+    k_arg[] init 3, 2
+
+    k_actual[] = DaGLMath_Vec3_normalize(k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalize_ShouldFailWhenGivenWrongArgument1ArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArraySizeMessage)
+
+    k_arg[] init 4
+
+    k_actual[] = DaGLMath_Vec3_normalize(k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalize_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArraySizeMessage)
+
+    k_arg[] init 4, 2
+
+    k_actual[] = DaGLMath_Vec3_normalize(k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+/// #endregion
+///# region         normalizeInPlace
+
+
+$TEST(DaGLMath_Vec3_normalizeInPlace_ShouldSetCorrectValue)
+    k_actual[] init 3
+
+    k_actual = gk_vec3_100
+    DaGLMath_Vec3_normalizeInPlace(k_actual)
+    $ASSERT_EQUAL_kArray(gk_vec3_100 ' k_actual)
+
+    k_actual = gk_vec3_010
+    DaGLMath_Vec3_normalizeInPlace(k_actual)
+    $ASSERT_EQUAL_kArray(gk_vec3_010 ' k_actual)
+
+    k_actual = gk_vec3_001
+    DaGLMath_Vec3_normalizeInPlace(k_actual)
+    $ASSERT_EQUAL_kArray(gk_vec3_001 ' k_actual)
+
+    k_actual_a1[] = fillarray(1.0, 2.0, 3.0)
+    DaGLMath_Vec3_normalizeInPlace(k_actual_a1)
+    k_expected_a1[] = fillarray(0.267261, 0.534522, 0.801784)
+    $ASSERT_EQUAL_kArray(k_expected_a1 ' k_actual_a1)
+
+    k_actual_a2[] = fillarray(-1.0, -2.0, -3.0)
+    DaGLMath_Vec3_normalizeInPlace(k_actual_a2)
+    k_expected_a2[] = fillarray(-0.267261, -0.534522, -0.801784)
+    $ASSERT_EQUAL_kArray(k_expected_a2 ' k_actual_a2)
+$END_TEST
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalizeInPlace_ShouldFailWhenGivenWrongArgument1ArrayDimensions)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArrayDimensionsMessage)
+
+    k_arg[] init 3, 2
+
+    DaGLMath_Vec3_normalizeInPlace(k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalizeInPlace_ShouldFailWhenGivenWrongArgument1ArraySize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArraySizeMessage)
+
+    k_arg[] init 4
+
+    DaGLMath_Vec3_normalizeInPlace(k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+$TEST_EXPECTED_INIT_FAIL(DaGLMath_Vec3_normalizeInPlace_ShouldFailWhenGivenWrongArgument1ArrayDimensionsAndSize)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArrayDimensionsMessage)
+    $EXPECT_MESSAGE_IN_CAPTURED_OUTPUT(gS_Vec3_WrongArgument1ArraySizeMessage)
+
+    k_arg[] init 4, 2
+
+    DaGLMath_Vec3_normalizeInPlace(k_arg)
+$END_TEST_EXPECTED_INIT_FAIL
+
+
+/// #endregion
 /// #region         triangleNormal
 
 

@@ -75,15 +75,6 @@ static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4 *p)
     return result;
 }
 
-static int32_t check(CSOUND *csound, DaGLMath_Vec3__Mat4_Vec3 *p)
-{
-    int32_t result = OK;
-    result |= check_Vec3(csound, p->out, Constants::output);
-    result |= check_Mat4(csound, p->m, Constants::arg1);
-    result |= check_Vec3(csound, p->v, Constants::arg2);
-    return result;
-}
-
 static int32_t check(CSOUND *csound, DaGLMath_Vec3__Vec3_Mat4 *p)
 {
     int32_t result = OK;
@@ -176,20 +167,6 @@ int32_t da_gl_math_mat4_quaternion(CSOUND *, DaGLMath_Mat4_quaternion *p)
     return OK;
 }
 
-int32_t da_gl_math_mat4_transposeInPlace_init(CSOUND *csound, DaGLMath_Mat4_transposeInPlace *p)
-{
-    return check(csound, p);
-}
-
-int32_t da_gl_math_mat4_transposeInPlace(CSOUND *, DaGLMath_Mat4_transposeInPlace *p)
-{
-    auto m = make_mat4(p->m->data);
-    m = transpose(m);
-
-    memcpy(p->m->data, value_ptr(m), sizeof_Mat4);
-    return OK;
-}
-
 int32_t da_gl_math_mat4_transpose_init(CSOUND *csound, DaGLMath_Mat4_transpose *p)
 {
     allocIfNull_Mat4(csound, p->out);
@@ -202,6 +179,20 @@ int32_t da_gl_math_mat4_transpose(CSOUND *, DaGLMath_Mat4_transpose *p)
     const auto out = transpose(m);
 
     memcpy(p->out->data, value_ptr(out), sizeof_Mat4);
+    return OK;
+}
+
+int32_t da_gl_math_mat4_transposeInPlace_init(CSOUND *csound, DaGLMath_Mat4_transposeInPlace *p)
+{
+    return check(csound, p);
+}
+
+int32_t da_gl_math_mat4_transposeInPlace(CSOUND *, DaGLMath_Mat4_transposeInPlace *p)
+{
+    auto m = make_mat4(p->m->data);
+    m = transpose(m);
+
+    memcpy(p->m->data, value_ptr(m), sizeof_Mat4);
     return OK;
 }
 

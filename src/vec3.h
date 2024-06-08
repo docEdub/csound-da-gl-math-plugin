@@ -19,10 +19,6 @@ typedef DaGLMath_Num__Vec3_Vec3                                     DaGLMath_Vec
 int32_t da_gl_math_vec3_dot_init                (CSOUND *csound,    DaGLMath_Vec3_dot *p);
 int32_t da_gl_math_vec3_dot                     (CSOUND *csound,    DaGLMath_Vec3_dot *p);
 
-typedef DaGLMath_Num__Vec3                                          DaGLMath_Vec3_lengthSquared;
-int32_t da_gl_math_vec3_lengthSquared_init      (CSOUND *csound,    DaGLMath_Vec3_lengthSquared *p);
-int32_t da_gl_math_vec3_lengthSquared           (CSOUND *csound,    DaGLMath_Vec3_lengthSquared *p);
-
 typedef DaGLMath_Num__Vec3                                          DaGLMath_Vec3_length;
 int32_t da_gl_math_vec3_length_init             (CSOUND *csound,    DaGLMath_Vec3_length *p);
 int32_t da_gl_math_vec3_length                  (CSOUND *csound,    DaGLMath_Vec3_length *p);
@@ -30,6 +26,14 @@ int32_t da_gl_math_vec3_length                  (CSOUND *csound,    DaGLMath_Vec
 typedef DaGLMath_Num__Vec3                                          DaGLMath_Vec3_lengthSquared;
 int32_t da_gl_math_vec3_lengthSquared_init      (CSOUND *csound,    DaGLMath_Vec3_lengthSquared *p);
 int32_t da_gl_math_vec3_lengthSquared           (CSOUND *csound,    DaGLMath_Vec3_lengthSquared *p);
+
+typedef DaGLMath_Vec3__Vec3                                         DaGLMath_Vec3_normalize;
+int32_t da_gl_math_vec3_normalize_init          (CSOUND *csound,    DaGLMath_Vec3_normalize *p);
+int32_t da_gl_math_vec3_normalize               (CSOUND *csound,    DaGLMath_Vec3_normalize *p);
+
+typedef DaGLMath_Nil__Vec3                                          DaGLMath_Vec3_normalizeInPlace;
+int32_t da_gl_math_vec3_normalizeInPlace_init   (CSOUND *csound,    DaGLMath_Vec3_normalizeInPlace *p);
+int32_t da_gl_math_vec3_normalizeInPlace        (CSOUND *csound,    DaGLMath_Vec3_normalizeInPlace *p);
 
 typedef DaGLMath_Vec3__Vec3_Vec3_Vec3                               DaGLMath_Vec3_triangleNormal;
 int32_t da_gl_math_vec3_triangleNormal_init     (CSOUND *csound,    DaGLMath_Vec3_triangleNormal *p);

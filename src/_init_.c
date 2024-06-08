@@ -188,6 +188,26 @@ static OENTRY localops[] = {
         .aopadr = NULL
     },
     {
+        .opname = "DaGLMath_Vec3_normalize",
+        .dsblksiz = sizeof(DaGLMath_Vec3_normalize),
+        .thread = 3,
+        .outypes = "k[]",
+        .intypes = "k[]",
+        .iopadr = (SUBR) da_gl_math_vec3_normalize_init,
+        .kopadr = (SUBR) da_gl_math_vec3_normalize,
+        .aopadr = NULL
+    },
+    {
+        .opname = "DaGLMath_Vec3_normalizeInPlace",
+        .dsblksiz = sizeof(DaGLMath_Vec3_normalizeInPlace),
+        .thread = 3,
+        .outypes = "",
+        .intypes = "k[]",
+        .iopadr = (SUBR) da_gl_math_vec3_normalizeInPlace_init,
+        .kopadr = (SUBR) da_gl_math_vec3_normalizeInPlace,
+        .aopadr = NULL
+    },
+    {
         .opname = "DaGLMath_Vec3_triangleNormal",
         .dsblksiz = sizeof(DaGLMath_Vec3_triangleNormal),
         .thread = 3,
